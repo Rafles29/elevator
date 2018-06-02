@@ -54,7 +54,7 @@ public class Clock {
         this.timeQueue.add(el);
     }
 
-    //nie wiem czy zadziała bo nie wiem czy znajdzie po IEntity
+    // TODO: 02.06.2018 check if behaves properly 
     public void remove(IEntity entity) {
         while(this.timeQueue.remove(entity)) {
 
