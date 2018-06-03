@@ -1,7 +1,9 @@
 package com.company.rafles.elevator;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.NoSuchElementException;
 
 public class Floor {
 
@@ -40,7 +42,7 @@ public class Floor {
         }
     }
 
-    public Passenger popPassenger(Direction direction) {
+    private Passenger popPassenger(Direction direction) {
         Passenger passenger = new Passenger(0,0,0);
         switch (direction) {
             case UP: {
@@ -54,5 +56,21 @@ public class Floor {
             }
         }
         return passenger;
+    }
+
+    public ArrayList<Passenger> popPassengers(Direction direction, int maxNumber) {
+        ArrayList<Passenger> passengers = new ArrayList<>();
+        Passenger passenger;
+        int i = 0;
+        while(i<maxNumber){
+            try {
+                passenger = this.popPassenger(direction);
+                passengers.add(passenger);
+                i++;
+            } catch (NoSuchElementException e) {
+                return passengers;
+            }
+        }
+        return passengers;
     }
 }
