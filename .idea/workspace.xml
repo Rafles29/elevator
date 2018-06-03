@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="740e3f56-99b4-4863-b658-58a5e7130ac5" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/controler/RealTimeController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/FullState.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/generator/Generator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/generator/IGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/policy/IPolicy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/com/company/rafles/policy/Policy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/State.java" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -26,8 +17,8 @@
       <file leaf-file-name="Clock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="816">
-              <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
+            <state relative-caret-position="408">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
               <folding>
                 <element signature="e#957#958#0" expanded="true" />
                 <element signature="e#1012#1013#0" expanded="true" />
@@ -51,8 +42,8 @@
       <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="807">
+              <caret line="158" column="33" selection-start-line="158" selection-start-column="33" selection-end-line="158" selection-end-column="33" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1389#1390#0" expanded="true" />
@@ -62,6 +53,14 @@
                 <element signature="method#moveDown#0;class#Elevator#0" />
                 <element signature="method#releasePassengers#0;class#Elevator#0" />
                 <element signature="method#takePassengers#0;class#Elevator#0" />
+                <element signature="e#3722#3723#0" expanded="true" />
+                <element signature="e#3763#3764#0" expanded="true" />
+                <element signature="e#3797#3798#0" expanded="true" />
+                <element signature="e#3838#3839#0" expanded="true" />
+                <element signature="e#3864#3865#0" expanded="true" />
+                <element signature="e#3905#3906#0" expanded="true" />
+                <element signature="e#3945#3946#0" expanded="true" />
+                <element signature="e#3984#3985#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -164,12 +163,12 @@
         <option value="$PROJECT_DIR$/src/com/company/rafles/listeners/IListener.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/State.java" />
-        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/policy/IPolicy.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/generator/IGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/generator/Generator.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/policy/Policy.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/controler/RealTimeController.java" />
+        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" />
       </list>
     </option>
   </component>
@@ -285,12 +284,12 @@
       <updated>1527874024001</updated>
       <workItem from="1527874029750" duration="1391000" />
       <workItem from="1527956788057" duration="11189000" />
-      <workItem from="1528034030867" duration="8874000" />
+      <workItem from="1528034030867" duration="9498000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21454000" />
+    <option name="totallyTimeSpent" value="22078000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -431,6 +430,14 @@
             <element signature="method#moveDown#0;class#Elevator#0" />
             <element signature="method#releasePassengers#0;class#Elevator#0" />
             <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#3722#3723#0" expanded="true" />
+            <element signature="e#3763#3764#0" expanded="true" />
+            <element signature="e#3797#3798#0" expanded="true" />
+            <element signature="e#3838#3839#0" expanded="true" />
+            <element signature="e#3864#3865#0" expanded="true" />
+            <element signature="e#3905#3906#0" expanded="true" />
+            <element signature="e#3945#3946#0" expanded="true" />
+            <element signature="e#3984#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -496,17 +503,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="18" column="5" lean-forward="true" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="816">
-          <caret line="58" column="46" lean-forward="true" selection-start-line="58" selection-start-column="46" selection-end-line="58" selection-end-column="46" />
-          <folding>
-            <element signature="e#957#958#0" expanded="true" />
-            <element signature="e#1012#1013#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -578,10 +574,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#957#958#0" expanded="true" />
+            <element signature="e#1012#1013#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        <state relative-caret-position="807">
+          <caret line="158" column="33" selection-start-line="158" selection-start-column="33" selection-end-line="158" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1389#1390#0" expanded="true" />
@@ -591,6 +598,14 @@
             <element signature="method#moveDown#0;class#Elevator#0" />
             <element signature="method#releasePassengers#0;class#Elevator#0" />
             <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#3722#3723#0" expanded="true" />
+            <element signature="e#3763#3764#0" expanded="true" />
+            <element signature="e#3797#3798#0" expanded="true" />
+            <element signature="e#3838#3839#0" expanded="true" />
+            <element signature="e#3864#3865#0" expanded="true" />
+            <element signature="e#3905#3906#0" expanded="true" />
+            <element signature="e#3945#3946#0" expanded="true" />
+            <element signature="e#3984#3985#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -143,6 +143,22 @@ public class Elevator extends Entity {
         passengers = currentFloor.popPassengers(direction,this.calculateSpaceLeft());
     }
 
+    public void goUp() {
+        this.state = State.MOVEUP;
+    }
+
+    public void goDown() {
+        this.state = State.MOVEDOWN;
+    }
+
+    public void openUp() {
+        this.state = State.OPENDOORS;
+    }
+
+    public void blockElevator() {
+        this.state = State.BLOCK;
+    }
+
     @Override
     public void update() {
         //patrz na stan i wykonaj odpiwedniaczynność
