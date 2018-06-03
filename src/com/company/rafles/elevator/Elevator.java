@@ -13,61 +13,34 @@ public class Elevator extends Entity {
     }
 
     public enum State {
-        MOVEUP,MOVEDOWN,OPENDOORS,BLOCK
+        STATIONARY,MOVING_UP,MOVING_DOWN,DOORS_OPENNING,DOORS_CLOSING,GETTING_IN_PEOPLE,GETTING_OUT_PEOPLE
+    }
+
+    public enum Decision {
+        MOVEUP,MOVEDOWN,OPENDOORS,DECIDE
     }
 
     // TODO: 02.06.2018 add other methods (passengers,time)
     private ArrayList<IListener> listeners;
-    private ArrayList<Boolean> buttons;
     private ArrayList<Floor> floors;
     private int currentFloor;
     private Doors doors;
     private State state;
+    private Decision decision;
     private int size;
     private ArrayList<Passenger> passengers;
 
     public Elevator(int numbFloors, Clock clock, int size) {
         this.clock = clock;
+        this.clock.pushUpdate(this,0);
         this.listeners = new ArrayList<IListener>();
-        this.buttons = new ArrayList<Boolean>();
         this.floors = new ArrayList<Floor>();
         this.currentFloor = 0;
         this.doors = Doors.CLOSED;
         this.size = size;
-        this.state = State.BLOCK;
+        this.state = State.STATIONARY;
+        this.decision = Decision.DECIDE;
         this.passengers = new ArrayList<Passenger>();
-    }
-
-    public ArrayList<IListener> getListeners() {
-        return listeners;
-    }
-
-    public ArrayList<Boolean> getButtons() {
-        return buttons;
-    }
-
-    public ArrayList<Floor> getFloors() {
-        return floors;
-    }
-
-    public ArrayList<Passenger> getPassengers() {
-        return passengers;
-    }
-
-    public int getCurrentFloor() {
-        return currentFloor;
-    }
-
-    public Doors getDoors() {
-        return doors;
-    }
-
-    public int getSize() {
-        return size;
-    }
-
-    public State getState() {
-        return state;
     }
 
     private void openDoors() {
@@ -143,58 +116,158 @@ public class Elevator extends Entity {
         passengers = currentFloor.popPassengers(direction,this.calculateSpaceLeft());
     }
 
+
+    public ArrayList<IListener> getListeners() {
+        return listeners;
+    }
+
+    public ArrayList<Floor> getFloors() {
+        return floors;
+    }
+
+    public ArrayList<Passenger> getPassengers() {
+        return passengers;
+    }
+
+    public int getCurrentFloor() {
+        return currentFloor;
+    }
+
+    public Doors getDoors() {
+        return doors;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public State getState() {
+        return state;
+    }
+
+    public ArrayList<Boolean> getButtons(){
+        ArrayList<Boolean> buttons = new ArrayList<>(getSize());
+        for (Boolean bool:buttons) {
+            bool = false;
+        }
+
+        for(int i=0;i<this.getSize();i++){
+            buttons.set(this.passengers.get(i).getDestination(),true);
+        }
+        return buttons;
+    }
+
     public void goUp() {
-        this.state = State.MOVEUP;
+        this.unblock();
+        this.decision = Decision.MOVEUP;
     }
 
     public void goDown() {
-        this.state = State.MOVEDOWN;
+        this.unblock();
+        this.decision = Decision.MOVEDOWN;
     }
 
     public void openUp() {
-        this.state = State.OPENDOORS;
+        this.unblock();
+        this.decision = Decision.OPENDOORS;
     }
 
-    public void blockElevator() {
-        this.state = State.BLOCK;
+    public void addPassengerToFloor(int floor, Passenger passenger) {
+        this.floors.get(floor).pushPassenger(passenger);
     }
+
 
     @Override
     public void update() {
-        //patrz na stan i wykonaj odpiwedniaczynność
 
-        switch (this.getState()) {
-            case BLOCK: {
-                this.block();
-                break;
-            }
-            case MOVEUP: {
-                this.unblock();
-                if (this.isDoorsOpen()) {
-                    this.takePassengers(Floor.Direction.UP);
-                    this.closeDoors();
+        if(this.decision == Decision.DECIDE) {
+            block();
+            //dodać push?
+        }
+
+        else if(this.state == State.STATIONARY) {
+
+            if (this.decision == Decision.OPENDOORS) {
+
+                this.state = State.DOORS_OPENNING;
+                this.clock.pushUpdate(this,1);
+
+            }else if(this.decision == Decision.MOVEUP) {
+
+                if(this.isDoorsOpen()) {
+
+                    this.state = State.DOORS_CLOSING;
+                    this.clock.pushUpdate(this,1);
+
+                } else {
+
+                    this.state = State.MOVING_UP;
+                    this.clock.pushUpdate(this,1);
+
                 }
-                this.moveUp();
-                this.block();
-                break;
-            }
-            case MOVEDOWN: {
-                this.unblock();
-                if (this.isDoorsOpen()) {
-                    this.takePassengers(Floor.Direction.DOWN);
-                    this.closeDoors();
+            }else if(this.decision == Decision.MOVEDOWN) {
+
+                if(this.isDoorsOpen()) {
+
+                    this.state = State.DOORS_CLOSING;
+                    this.clock.pushUpdate(this,1);
+
+                } else {
+
+                    this.state = State.MOVING_DOWN;
+                    this.clock.pushUpdate(this,1);
                 }
-                this.moveDown();
-                this.block();
-                break;
+
             }
-            case OPENDOORS: {
-                this.unblock();
-                this.openDoors();
-                this.releasePassengers();
+        } else if(this.state == State.DOORS_CLOSING) {
+
+            this.closeDoors();
+            this.state = State.STATIONARY;
+            this.clock.pushUpdate(this,1);
+
+        } else if(this.state == State.DOORS_OPENNING) {
+
+            this.openDoors();
+            this.state = State.GETTING_OUT_PEOPLE;
+            this.clock.pushUpdate(this,1);
+
+        } else if(this.state == State.GETTING_IN_PEOPLE) {
+            if (this.decision == Decision.OPENDOORS) {
+
                 this.block();
-                break;
+                //nie wiem czy wtedy pushować?
+                this.clock.pushUpdate(this,1);
+
+            }else if(this.decision == Decision.MOVEUP) {
+
+                this.takePassengers(Floor.Direction.UP);
+                this.state = State.DOORS_CLOSING;
+                this.clock.pushUpdate(this,1);
+
+            }else if(this.decision == Decision.MOVEDOWN) {
+
+                this.takePassengers(Floor.Direction.DOWN);
+                this.state = State.DOORS_CLOSING;
+                this.clock.pushUpdate(this,1);
             }
+
+        } else if(this.state == State.GETTING_OUT_PEOPLE) {
+
+            this.releasePassengers();
+            this.state = State.GETTING_IN_PEOPLE;
+            this.clock.pushUpdate(this,1);
+
+        } else if(this.state == State.MOVING_UP) {
+
+            this.moveUp();
+            this.state = State.STATIONARY;
+            this.clock.pushUpdate(this,1);
+
+        } else if(this.state == State.MOVING_DOWN) {
+
+            this.moveDown();
+            this.state = State.STATIONARY;
+            this.clock.pushUpdate(this,1);
         }
     }
 

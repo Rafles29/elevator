@@ -1,6 +1,6 @@
 package com.company.rafles.entity;
 
-public class Entity implements IEntity {
+public abstract class Entity implements IEntity {
 
     private boolean blocked;
     protected Clock clock;
@@ -17,11 +17,6 @@ public class Entity implements IEntity {
     public boolean isBlocking() {
         return this.blocked;
     }
-
-    @Override
-    public void update() {
-
-    }
-
+    
 
 }

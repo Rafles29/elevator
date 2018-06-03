@@ -41,7 +41,9 @@ public class Clock {
     }
 
     public void tick() {
-        this.timeQueue.remove().entity.update();
+        Element element = this.timeQueue.remove();
+        this.currentTime = element.getTimeStamp();
+        element.entity.update();
     }
 
     public boolean isTicking() {

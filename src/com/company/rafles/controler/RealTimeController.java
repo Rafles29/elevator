@@ -21,8 +21,6 @@ public class RealTimeController extends Thread {
         this.generator = new Generator(elevator, clock);
         this.policy = new Policy(elevator);
 
-        generator.generate();
-
         super.start();
     }
 
