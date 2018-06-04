@@ -1,9 +1,10 @@
 package com.company.rafles.entity;
 import java.util.PriorityQueue;
+import java.util.function.Predicate;
 
 public class Clock {
 
-    private class Element implements Comparable<Element> {
+    public class Element implements Comparable<Element> {
 
         private IEntity entity;
         private long timeStamp;
@@ -23,7 +24,7 @@ public class Clock {
 
         @Override
         public int compareTo(Element e) {
-            return Long.compare( e.getTimeStamp(), this.getTimeStamp());
+            return Long.compare( this.getTimeStamp(),e.getTimeStamp());
 
         }
 
@@ -31,6 +32,10 @@ public class Clock {
 
     private long currentTime;
     private PriorityQueue<Element> timeQueue = new PriorityQueue<Element>();
+
+    public PriorityQueue<Element> getTimeQueue() {
+        return timeQueue;
+    }
 
     public long getCurrentTime() {
         return this.currentTime;
@@ -58,7 +63,8 @@ public class Clock {
 
     // TODO: 02.06.2018 check if behaves properly 
     public void remove(IEntity entity) {
-        while(this.timeQueue.remove(entity)) {
+        Predicate<Element> elementPredicate = e -> e.getEntity() == entity;
+        while(this.timeQueue.removeIf(elementPredicate)) {
 
         }
     }

@@ -12,9 +12,4 @@ public class Generator implements IGenerator{
         this.elevator = elevator;
         this.clock = clock;
     }
-
-    @Override
-    public void generate() {
-
-    }
 }

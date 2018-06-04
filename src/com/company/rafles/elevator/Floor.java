@@ -10,8 +10,21 @@ public class Floor {
     public enum Direction {
         UP,DOWN
     }
-    private Deque<Passenger> goingUp = new ArrayDeque<Passenger>();
-    private Deque<Passenger> goingDown = new ArrayDeque<Passenger>();
+    private Deque<Passenger> goingUp;
+    private Deque<Passenger> goingDown;
+
+    public Floor() {
+        goingUp = new ArrayDeque<Passenger>();
+        goingDown = new ArrayDeque<Passenger>();
+    }
+
+    public Deque<Passenger> getGoingUp() {
+        return goingUp;
+    }
+
+    public Deque<Passenger> getGoingDown() {
+        return goingDown;
+    }
 
     public boolean isButtonPressed(Direction direction) {
         boolean status = false;
@@ -42,7 +55,7 @@ public class Floor {
         }
     }
 
-    private Passenger popPassenger(Direction direction) {
+    public Passenger popPassenger(Direction direction) {
         Passenger passenger = new Passenger(0,0,0);
         switch (direction) {
             case UP: {
