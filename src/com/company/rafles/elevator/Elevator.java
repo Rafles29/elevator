@@ -17,7 +17,7 @@ public class Elevator extends Entity {
     }
 
     public enum Decision {
-        MOVEUP,MOVEDOWN,OPENDOORS,DECIDE
+        MOVEUP,MOVEDOWN,OPENDOORS
     }
 
     // TODO: 02.06.2018 add other methods (passengers,time)
@@ -39,8 +39,9 @@ public class Elevator extends Entity {
         this.doors = Doors.CLOSED;
         this.size = size;
         this.state = State.STATIONARY;
-        this.decision = Decision.DECIDE;
+        this.decision = null;
         this.passengers = new ArrayList<Passenger>();
+        this.block();
     }
 
     private void openDoors() {
@@ -180,12 +181,7 @@ public class Elevator extends Entity {
     @Override
     public void update() {
 
-        if(this.decision == Decision.DECIDE) {
-            block();
-            //dodać push?
-        }
-
-        else if(this.state == State.STATIONARY) {
+        if(this.state == State.STATIONARY) {
 
             if (this.decision == Decision.OPENDOORS) {
 
