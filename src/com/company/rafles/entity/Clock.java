@@ -25,7 +25,6 @@ public class Clock {
         @Override
         public int compareTo(Element e) {
             return Long.compare( this.getTimeStamp(),e.getTimeStamp());
-
         }
 
     }

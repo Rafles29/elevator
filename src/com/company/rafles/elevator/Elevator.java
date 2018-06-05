@@ -8,33 +8,37 @@ import java.util.ArrayList;
 
 public class Elevator extends Entity {
 
+
     public enum Doors {
         OPEN,CLOSED
     }
-
     public enum State {
         STATIONARY,MOVING_UP,MOVING_DOWN,DOORS_OPENNING,DOORS_CLOSING,GETTING_IN_PEOPLE,GETTING_OUT_PEOPLE
     }
-
     public enum Decision {
         MOVEUP,MOVEDOWN,OPENDOORS
     }
+    //enums
 
-    // TODO: 02.06.2018 add other methods (passengers,time)
     private ArrayList<IListener> listeners;
     private ArrayList<Floor> floors;
     private int currentFloor;
     private Doors doors;
     private State state;
     private Decision decision;
+    private int numbFloors;
     private int size;
     private ArrayList<Passenger> passengers;
 
     public Elevator(int numbFloors, Clock clock, int size) {
+        this.numbFloors = numbFloors;
         this.clock = clock;
         this.clock.pushUpdate(this,0);
         this.listeners = new ArrayList<IListener>();
-        this.floors = new ArrayList<Floor>();
+        this.floors = new ArrayList<>();
+        for (int i=0;i<numbFloors;i++) {
+            this.floors.add(new Floor());
+        }
         this.currentFloor = 0;
         this.doors = Doors.CLOSED;
         this.size = size;
@@ -44,30 +48,32 @@ public class Elevator extends Entity {
         this.block();
     }
 
-    private void openDoors() {
+
+    //Internal methods
+    public void openDoors() {
         this.doors = Doors.OPEN;
     }
 
-    private void closeDoors() {
+    public void closeDoors() {
         this.doors = Doors.CLOSED;
     }
 
-    private boolean isDoorsOpen() {
+    public boolean isDoorsOpen() {
         if (this.getDoors() == Doors.OPEN)
             return true;
         else
             return false;
     }
 
-    private int getNumberOfPassengers() {
+    public int getNumberOfPassengers() {
         return this.passengers.size();
     }
 
-    private int calculateSpaceLeft() {
+    public int calculateSpaceLeft() {
         return this.getSize() - this.getNumberOfPassengers();
     }
 
-    private void moveUp() {
+    public void moveUp() {
         if(this.isDoorsOpen()) {
             throw new Error("The doors are opened. It's impossible to move with opened doors");
         }
@@ -79,7 +85,7 @@ public class Elevator extends Entity {
         }
     }
 
-    private void moveDown() {
+    public void moveDown() {
         if(this.isDoorsOpen()) {
             throw new Error("The doors are opened. It's impossible to move with opened doors");
         }
@@ -91,7 +97,7 @@ public class Elevator extends Entity {
         }
     }
 
-    private void releasePassengers() {
+    public void releasePassengers() {
         if (!this.isDoorsOpen()) {
             throw new Error("You have to open the doors first!");
         }
@@ -106,7 +112,7 @@ public class Elevator extends Entity {
         }
     }
 
-    private void takePassengers(Floor.Direction direction) {
+    public void takePassengers(Floor.Direction direction) {
         if (!this.isDoorsOpen()) {
             throw new Error("You have to open the doors first!");
         }
@@ -115,8 +121,18 @@ public class Elevator extends Entity {
         ArrayList<Passenger> passengers;
 
         passengers = currentFloor.popPassengers(direction,this.calculateSpaceLeft());
+        this.passengers.addAll(passengers);
+    }
+    //Internal methods
+
+    //For Artur
+    public int getNumbFloors() {
+        return numbFloors;
     }
 
+    public Decision getDecision() {
+        return decision;
+    }
 
     public ArrayList<IListener> getListeners() {
         return listeners;
@@ -147,12 +163,12 @@ public class Elevator extends Entity {
     }
 
     public ArrayList<Boolean> getButtons(){
-        ArrayList<Boolean> buttons = new ArrayList<>(getSize());
-        for (Boolean bool:buttons) {
-            bool = false;
+        ArrayList<Boolean> buttons = new ArrayList<>();
+        for (int i=0; i<this.floors.size();i++) {
+            buttons.add(new Boolean(false));
         }
 
-        for(int i=0;i<this.getSize();i++){
+        for(int i=0;i<this.passengers.size();i++){
             buttons.set(this.passengers.get(i).getDestination(),true);
         }
         return buttons;
@@ -176,8 +192,10 @@ public class Elevator extends Entity {
     public void addPassengerToFloor(int floor, Passenger passenger) {
         this.floors.get(floor).pushPassenger(passenger);
     }
+    //For Artur
 
 
+    //Machine State
     @Override
     public void update() {
 
@@ -266,11 +284,14 @@ public class Elevator extends Entity {
             this.clock.pushUpdate(this,1);
         }
     }
+    //Machine State
 
+    //For Goliat
     public FullState getFullState() {
         // TODO: 02.06.2018 change this when State class will be implemented
         return new FullState();
     }
+    //For Goliat
 
 
 
