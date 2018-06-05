@@ -16,7 +16,7 @@ public class Elevator extends Entity {
         STATIONARY,MOVING_UP,MOVING_DOWN,DOORS_OPENNING,DOORS_CLOSING,GETTING_IN_PEOPLE,GETTING_OUT_PEOPLE
     }
     public enum Decision {
-        MOVEUP,MOVEDOWN,OPENDOORS,STAY
+        MOVEUP,MOVEDOWN,OPENDOORS,STAY,CLEAR
     }
     //enums
 
@@ -51,7 +51,7 @@ public class Elevator extends Entity {
 
     //Internal
     public  void clearDecision() {
-        this.decision = null;
+        this.decision = Decision.CLEAR;
     }
 
     public void openDoors() {
@@ -214,6 +214,7 @@ public class Elevator extends Entity {
                     case OPENDOORS:{
                         if(this.isDoorsOpen()) {
                             block();
+                            this.clock.pushUpdate(this,1);
                         } else {
                             this.state = State.DOORS_OPENNING;
                             this.clock.pushUpdate(this,1);
@@ -249,6 +250,7 @@ public class Elevator extends Entity {
                     }
                     default: {
                         block();
+                        this.clock.pushUpdate(this,1);
                         break;
                     }
                 }

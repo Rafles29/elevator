@@ -71,5 +71,21 @@ class ElevatorTest {
 
     @Test
     void update() {
+        Passenger passenger = new Passenger(1,2,4);
+        this.elevator.addPassengerToFloor(1,passenger);
+
+        for (int i = 0;i<4;i++) {
+            while (clock.isTicking()) {
+                clock.tick();
+            }
+            if (elevator.isBlocking()) {
+                if (i == 0) elevator.goUp();
+                if (i == 1) elevator.openUp();
+                if (i == 2) elevator.goUp();
+                if (i == 3) elevator.openUp();
+
+            }
+        }
+        System.out.println("done");
     }
 }
