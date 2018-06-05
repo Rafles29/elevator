@@ -31,23 +31,42 @@
       <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="202" column="29" lean-forward="true" selection-start-line="202" selection-start-column="29" selection-end-line="202" selection-end-column="29" />
+            <state relative-caret-position="357">
+              <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="class#Doors#0;class#Elevator#0" />
                 <element signature="class#State#0;class#Elevator#0" />
-                <element signature="class#Decision#0;class#Elevator#0" />
-                <element signature="method#isDoorsOpen#0;class#Elevator#0" />
-                <element signature="method#moveUp#0;class#Elevator#0" />
-                <element signature="method#moveDown#0;class#Elevator#0" />
-                <element signature="method#releasePassengers#0;class#Elevator#0" />
-                <element signature="method#takePassengers#0;class#Elevator#0" />
+                <element signature="e#1444#1445#0" expanded="true" />
+                <element signature="e#1472#1473#0" expanded="true" />
+                <element signature="e#1287#1288#0" expanded="true" />
+                <element signature="e#1326#1327#0" expanded="true" />
+                <element signature="e#1359#1360#0" expanded="true" />
+                <element signature="e#1400#1401#0" expanded="true" />
+                <element signature="e#1593#1594#0" expanded="true" />
+                <element signature="e#1638#1639#0" expanded="true" />
+                <element signature="e#1678#1679#0" expanded="true" />
+                <element signature="e#1746#1747#0" expanded="true" />
+                <element signature="e#3552#3553#0" expanded="true" />
+                <element signature="e#3585#3586#0" expanded="true" />
+                <element signature="e#3622#3623#0" expanded="true" />
+                <element signature="e#3653#3654#0" expanded="true" />
+                <element signature="e#3370#3371#0" expanded="true" />
+                <element signature="e#3402#3403#0" expanded="true" />
+                <element signature="e#3445#3446#0" expanded="true" />
+                <element signature="e#3474#3475#0" expanded="true" />
+                <element signature="e#3525#3526#0" expanded="true" />
+                <element signature="e#3558#3559#0" expanded="true" />
+                <element signature="e#3594#3595#0" expanded="true" />
+                <element signature="e#3629#3630#0" expanded="true" />
+                <element signature="e#3660#3661#0" expanded="true" />
+                <element signature="e#3688#3689#0" expanded="true" />
                 <element signature="e#3716#3717#0" expanded="true" />
                 <element signature="e#3743#3744#0" expanded="true" />
-                <element signature="method#goUp#0;class#Elevator#0" />
-                <element signature="method#goDown#0;class#Elevator#0" />
-                <element signature="method#openUp#0;class#Elevator#0" />
+                <element signature="e#3774#3775#0" expanded="true" />
+                <element signature="e#3802#3803#0" expanded="true" />
+                <element signature="e#4511#4512#0" expanded="true" />
+                <element signature="e#4574#4575#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -443,7 +462,7 @@
       <workItem from="1528034030867" duration="9878000" />
       <workItem from="1528046642644" duration="10524000" />
       <workItem from="1528140315584" duration="5808000" />
-      <workItem from="1528189543230" duration="3680000" />
+      <workItem from="1528189543230" duration="8272000" />
     </task>
     <servers />
   </component>
@@ -480,7 +499,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="42470000" />
+    <option name="totallyTimeSpent" value="47062000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,7 +552,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <option name="time" value="29" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
@@ -569,17 +588,36 @@
             <element signature="imports" expanded="true" />
             <element signature="class#Doors#0;class#Elevator#0" />
             <element signature="class#State#0;class#Elevator#0" />
-            <element signature="class#Decision#0;class#Elevator#0" />
-            <element signature="method#isDoorsOpen#0;class#Elevator#0" />
-            <element signature="method#moveUp#0;class#Elevator#0" />
-            <element signature="method#moveDown#0;class#Elevator#0" />
-            <element signature="method#releasePassengers#0;class#Elevator#0" />
-            <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+            <element signature="e#1400#1401#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1678#1679#0" expanded="true" />
+            <element signature="e#1746#1747#0" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3585#3586#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3653#3654#0" expanded="true" />
+            <element signature="e#3370#3371#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3629#3630#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
             <element signature="e#3716#3717#0" expanded="true" />
             <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="method#goUp#0;class#Elevator#0" />
-            <element signature="method#goDown#0;class#Elevator#0" />
-            <element signature="method#openUp#0;class#Elevator#0" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#3802#3803#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
+            <element signature="e#4574#4575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -668,17 +706,36 @@
             <element signature="imports" expanded="true" />
             <element signature="class#Doors#0;class#Elevator#0" />
             <element signature="class#State#0;class#Elevator#0" />
-            <element signature="class#Decision#0;class#Elevator#0" />
-            <element signature="method#isDoorsOpen#0;class#Elevator#0" />
-            <element signature="method#moveUp#0;class#Elevator#0" />
-            <element signature="method#moveDown#0;class#Elevator#0" />
-            <element signature="method#releasePassengers#0;class#Elevator#0" />
-            <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+            <element signature="e#1400#1401#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1678#1679#0" expanded="true" />
+            <element signature="e#1746#1747#0" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3585#3586#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3653#3654#0" expanded="true" />
+            <element signature="e#3370#3371#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3629#3630#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
             <element signature="e#3716#3717#0" expanded="true" />
             <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="method#goUp#0;class#Elevator#0" />
-            <element signature="method#goDown#0;class#Elevator#0" />
-            <element signature="method#openUp#0;class#Elevator#0" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#3802#3803#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
+            <element signature="e#4574#4575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -760,17 +817,36 @@
             <element signature="imports" expanded="true" />
             <element signature="class#Doors#0;class#Elevator#0" />
             <element signature="class#State#0;class#Elevator#0" />
-            <element signature="class#Decision#0;class#Elevator#0" />
-            <element signature="method#isDoorsOpen#0;class#Elevator#0" />
-            <element signature="method#moveUp#0;class#Elevator#0" />
-            <element signature="method#moveDown#0;class#Elevator#0" />
-            <element signature="method#releasePassengers#0;class#Elevator#0" />
-            <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+            <element signature="e#1400#1401#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1678#1679#0" expanded="true" />
+            <element signature="e#1746#1747#0" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3585#3586#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3653#3654#0" expanded="true" />
+            <element signature="e#3370#3371#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3629#3630#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
             <element signature="e#3716#3717#0" expanded="true" />
             <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="method#goUp#0;class#Elevator#0" />
-            <element signature="method#goDown#0;class#Elevator#0" />
-            <element signature="method#openUp#0;class#Elevator#0" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#3802#3803#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
+            <element signature="e#4574#4575#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -987,23 +1063,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="202" column="29" lean-forward="true" selection-start-line="202" selection-start-column="29" selection-end-line="202" selection-end-column="29" />
+        <state relative-caret-position="357">
+          <caret line="205" lean-forward="true" selection-start-line="205" selection-end-line="205" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="class#Doors#0;class#Elevator#0" />
             <element signature="class#State#0;class#Elevator#0" />
-            <element signature="class#Decision#0;class#Elevator#0" />
-            <element signature="method#isDoorsOpen#0;class#Elevator#0" />
-            <element signature="method#moveUp#0;class#Elevator#0" />
-            <element signature="method#moveDown#0;class#Elevator#0" />
-            <element signature="method#releasePassengers#0;class#Elevator#0" />
-            <element signature="method#takePassengers#0;class#Elevator#0" />
+            <element signature="e#1444#1445#0" expanded="true" />
+            <element signature="e#1472#1473#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+            <element signature="e#1326#1327#0" expanded="true" />
+            <element signature="e#1359#1360#0" expanded="true" />
+            <element signature="e#1400#1401#0" expanded="true" />
+            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#1638#1639#0" expanded="true" />
+            <element signature="e#1678#1679#0" expanded="true" />
+            <element signature="e#1746#1747#0" expanded="true" />
+            <element signature="e#3552#3553#0" expanded="true" />
+            <element signature="e#3585#3586#0" expanded="true" />
+            <element signature="e#3622#3623#0" expanded="true" />
+            <element signature="e#3653#3654#0" expanded="true" />
+            <element signature="e#3370#3371#0" expanded="true" />
+            <element signature="e#3402#3403#0" expanded="true" />
+            <element signature="e#3445#3446#0" expanded="true" />
+            <element signature="e#3474#3475#0" expanded="true" />
+            <element signature="e#3525#3526#0" expanded="true" />
+            <element signature="e#3558#3559#0" expanded="true" />
+            <element signature="e#3594#3595#0" expanded="true" />
+            <element signature="e#3629#3630#0" expanded="true" />
+            <element signature="e#3660#3661#0" expanded="true" />
+            <element signature="e#3688#3689#0" expanded="true" />
             <element signature="e#3716#3717#0" expanded="true" />
             <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="method#goUp#0;class#Elevator#0" />
-            <element signature="method#goDown#0;class#Elevator#0" />
-            <element signature="method#openUp#0;class#Elevator#0" />
+            <element signature="e#3774#3775#0" expanded="true" />
+            <element signature="e#3802#3803#0" expanded="true" />
+            <element signature="e#4511#4512#0" expanded="true" />
+            <element signature="e#4574#4575#0" expanded="true" />
           </folding>
         </state>
       </provider>

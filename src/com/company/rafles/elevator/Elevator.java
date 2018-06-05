@@ -16,7 +16,7 @@ public class Elevator extends Entity {
         STATIONARY,MOVING_UP,MOVING_DOWN,DOORS_OPENNING,DOORS_CLOSING,GETTING_IN_PEOPLE,GETTING_OUT_PEOPLE
     }
     public enum Decision {
-        MOVEUP,MOVEDOWN,OPENDOORS
+        MOVEUP,MOVEDOWN,OPENDOORS,STAY
     }
     //enums
 
@@ -49,7 +49,11 @@ public class Elevator extends Entity {
     }
 
 
-    //Internal methods
+    //Internal
+    public  void clearDecision() {
+        this.decision = null;
+    }
+
     public void openDoors() {
         this.doors = Doors.OPEN;
     }
@@ -189,6 +193,11 @@ public class Elevator extends Entity {
         this.decision = Decision.OPENDOORS;
     }
 
+    public void stay() {
+        this.unblock();
+        this.decision = Decision.STAY;
+    }
+
     public void addPassengerToFloor(int floor, Passenger passenger) {
         this.floors.get(floor).pushPassenger(passenger);
     }
@@ -203,29 +212,44 @@ public class Elevator extends Entity {
             case STATIONARY:{
                 switch (this.decision) {
                     case OPENDOORS:{
-                        this.state = State.DOORS_OPENNING;
-                        this.clock.pushUpdate(this,1);
+                        if(this.isDoorsOpen()) {
+                            block();
+                        } else {
+                            this.state = State.DOORS_OPENNING;
+                            this.clock.pushUpdate(this,1);
+                            this.clearDecision();
+                        }
                         return;
                     }
                     case MOVEUP:{
                         if(this.isDoorsOpen()) {
-                            this.state = State.DOORS_CLOSING;
+                            this.state = State.GETTING_IN_PEOPLE;
                             this.clock.pushUpdate(this,1);
                         } else {
                             this.state = State.MOVING_UP;
                             this.clock.pushUpdate(this,1);
+                            this.clearDecision();
                         }
                         return;
                     }
                     case MOVEDOWN:{
                         if(this.isDoorsOpen()) {
-                            this.state = State.DOORS_CLOSING;
+                            this.state = State.GETTING_IN_PEOPLE;
                             this.clock.pushUpdate(this,1);
                         } else {
                             this.state = State.MOVING_DOWN;
                             this.clock.pushUpdate(this,1);
+                            this.clearDecision();
                         }
                         return;
+                    }
+                    case STAY: {
+                        this.clock.pushUpdate(this,1);
+                        this.clearDecision();
+                    }
+                    default: {
+                        block();
+                        break;
                     }
                 }
                 return;
@@ -254,6 +278,12 @@ public class Elevator extends Entity {
                 this.clock.pushUpdate(this,1);
                 return;
             }
+            case GETTING_OUT_PEOPLE:{
+                this.releasePassengers();
+                this.state = State.STATIONARY;
+                this.clock.pushUpdate(this,1);
+                return;
+            }
             case GETTING_IN_PEOPLE:{
                 switch (this.decision) {
                     case MOVEUP:{
@@ -268,19 +298,10 @@ public class Elevator extends Entity {
                         this.clock.pushUpdate(this,1);
                         return;
                     }
-                    case OPENDOORS:{
-                        this.block();
-                        return;
-                    }
                 }
                 return;
             }
-            case GETTING_OUT_PEOPLE:{
-                this.releasePassengers();
-                this.state = State.GETTING_IN_PEOPLE;
-                this.clock.pushUpdate(this,1);
-                return;
-            }
+
         }        
     }
     //Machine State
