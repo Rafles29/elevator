@@ -198,91 +198,90 @@ public class Elevator extends Entity {
     //Machine State
     @Override
     public void update() {
-
-        if(this.state == State.STATIONARY) {
-
-            if (this.decision == Decision.OPENDOORS) {
-
-                this.state = State.DOORS_OPENNING;
-                this.clock.pushUpdate(this,1);
-
-            }else if(this.decision == Decision.MOVEUP) {
-
-                if(this.isDoorsOpen()) {
-
-                    this.state = State.DOORS_CLOSING;
-                    this.clock.pushUpdate(this,1);
-
-                } else {
-
-                    this.state = State.MOVING_UP;
-                    this.clock.pushUpdate(this,1);
-
+        
+        switch (this.state) {
+            case STATIONARY:{
+                switch (this.decision) {
+                    case OPENDOORS:{
+                        this.state = State.DOORS_OPENNING;
+                        this.clock.pushUpdate(this,1);
+                        return;
+                    }
+                    case MOVEUP:{
+                        if(this.isDoorsOpen()) {
+                            this.state = State.DOORS_CLOSING;
+                            this.clock.pushUpdate(this,1);
+                        } else {
+                            this.state = State.MOVING_UP;
+                            this.clock.pushUpdate(this,1);
+                        }
+                        return;
+                    }
+                    case MOVEDOWN:{
+                        if(this.isDoorsOpen()) {
+                            this.state = State.DOORS_CLOSING;
+                            this.clock.pushUpdate(this,1);
+                        } else {
+                            this.state = State.MOVING_DOWN;
+                            this.clock.pushUpdate(this,1);
+                        }
+                        return;
+                    }
                 }
-            }else if(this.decision == Decision.MOVEDOWN) {
-
-                if(this.isDoorsOpen()) {
-
-                    this.state = State.DOORS_CLOSING;
-                    this.clock.pushUpdate(this,1);
-
-                } else {
-
-                    this.state = State.MOVING_DOWN;
-                    this.clock.pushUpdate(this,1);
+                return;
+            }
+            case DOORS_OPENNING:{
+                this.openDoors();
+                this.state = State.GETTING_OUT_PEOPLE;
+                this.clock.pushUpdate(this,1);
+                return;
+            }
+            case DOORS_CLOSING:{
+                this.closeDoors();
+                this.state = State.STATIONARY;
+                this.clock.pushUpdate(this,1);
+                return;
+            }
+            case MOVING_UP:{
+                this.moveUp();
+                this.state = State.STATIONARY;
+                this.clock.pushUpdate(this,1);
+                return;
+            }
+            case MOVING_DOWN:{
+                this.moveDown();
+                this.state = State.STATIONARY;
+                this.clock.pushUpdate(this,1);
+                return;
+            }
+            case GETTING_IN_PEOPLE:{
+                switch (this.decision) {
+                    case MOVEUP:{
+                        this.takePassengers(Floor.Direction.UP);
+                        this.state = State.DOORS_CLOSING;
+                        this.clock.pushUpdate(this,1);
+                        return;
+                    }
+                    case MOVEDOWN:{
+                        this.takePassengers(Floor.Direction.DOWN);
+                        this.state = State.DOORS_CLOSING;
+                        this.clock.pushUpdate(this,1);
+                        return;
+                    }
+                    case OPENDOORS:{
+                        this.block();
+                        return;
+                    }
                 }
-
+                return;
             }
-        } else if(this.state == State.DOORS_CLOSING) {
-
-            this.closeDoors();
-            this.state = State.STATIONARY;
-            this.clock.pushUpdate(this,1);
-
-        } else if(this.state == State.DOORS_OPENNING) {
-
-            this.openDoors();
-            this.state = State.GETTING_OUT_PEOPLE;
-            this.clock.pushUpdate(this,1);
-
-        } else if(this.state == State.GETTING_IN_PEOPLE) {
-            if (this.decision == Decision.OPENDOORS) {
-
-                this.block();
-                //nie wiem czy wtedy pushować?
+            case GETTING_OUT_PEOPLE:{
+                this.releasePassengers();
+                this.state = State.GETTING_IN_PEOPLE;
                 this.clock.pushUpdate(this,1);
-
-            }else if(this.decision == Decision.MOVEUP) {
-
-                this.takePassengers(Floor.Direction.UP);
-                this.state = State.DOORS_CLOSING;
-                this.clock.pushUpdate(this,1);
-
-            }else if(this.decision == Decision.MOVEDOWN) {
-
-                this.takePassengers(Floor.Direction.DOWN);
-                this.state = State.DOORS_CLOSING;
-                this.clock.pushUpdate(this,1);
+                return;
             }
-
-        } else if(this.state == State.GETTING_OUT_PEOPLE) {
-
-            this.releasePassengers();
-            this.state = State.GETTING_IN_PEOPLE;
-            this.clock.pushUpdate(this,1);
-
-        } else if(this.state == State.MOVING_UP) {
-
-            this.moveUp();
-            this.state = State.STATIONARY;
-            this.clock.pushUpdate(this,1);
-
-        } else if(this.state == State.MOVING_DOWN) {
-
-            this.moveDown();
-            this.state = State.STATIONARY;
-            this.clock.pushUpdate(this,1);
-        }
+        }        
     }
     //Machine State
 
