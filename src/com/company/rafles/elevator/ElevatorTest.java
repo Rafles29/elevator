@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ElevatorTest {
+public class ElevatorTest {
 
     private Clock clock;
     private Elevator elevator;

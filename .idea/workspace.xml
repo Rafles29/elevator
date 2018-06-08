@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="740e3f56-99b4-4863-b658-58a5e7130ac5" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -18,7 +20,7 @@
       <file leaf-file-name="Clock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="278">
+            <state relative-caret-position="680">
               <caret line="53" selection-start-line="53" selection-end-line="53" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -37,7 +39,7 @@
       <file leaf-file-name="Entity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Entity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
+            <state relative-caret-position="221">
               <caret line="17" selection-start-line="17" selection-end-line="17" />
               <folding>
                 <element signature="e#171#172#0" expanded="true" />
@@ -53,52 +55,44 @@
       <file leaf-file-name="Elevator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="3196">
               <caret line="222" selection-start-line="222" selection-end-line="222" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="class#Doors#0;class#Elevator#0" />
-                <element signature="class#State#0;class#Elevator#0" />
-                <element signature="e#1444#1445#0" expanded="true" />
-                <element signature="e#1472#1473#0" expanded="true" />
-                <element signature="e#1287#1288#0" expanded="true" />
-                <element signature="e#1326#1327#0" expanded="true" />
-                <element signature="e#1359#1360#0" expanded="true" />
-                <element signature="e#1400#1401#0" expanded="true" />
-                <element signature="e#1593#1594#0" expanded="true" />
+                <element signature="e#241#286#0" />
+                <element signature="e#291#423#0" />
+                <element signature="e#1597#1598#0" expanded="true" />
                 <element signature="e#1638#1639#0" expanded="true" />
-                <element signature="e#1678#1679#0" expanded="true" />
-                <element signature="e#1746#1747#0" expanded="true" />
-                <element signature="e#3552#3553#0" expanded="true" />
-                <element signature="e#3585#3586#0" expanded="true" />
-                <element signature="e#3622#3623#0" expanded="true" />
-                <element signature="e#3653#3654#0" expanded="true" />
-                <element signature="e#3370#3371#0" expanded="true" />
-                <element signature="e#3402#3403#0" expanded="true" />
-                <element signature="e#3445#3446#0" expanded="true" />
-                <element signature="e#3474#3475#0" expanded="true" />
-                <element signature="e#3525#3526#0" expanded="true" />
-                <element signature="e#3558#3559#0" expanded="true" />
-                <element signature="e#3594#3595#0" expanded="true" />
                 <element signature="e#3629#3630#0" expanded="true" />
-                <element signature="e#3660#3661#0" expanded="true" />
-                <element signature="e#3688#3689#0" expanded="true" />
-                <element signature="e#3716#3717#0" expanded="true" />
-                <element signature="e#3743#3744#0" expanded="true" />
-                <element signature="e#3774#3775#0" expanded="true" />
-                <element signature="e#3802#3803#0" expanded="true" />
-                <element signature="e#4511#4512#0" expanded="true" />
-                <element signature="e#4574#4575#0" expanded="true" />
+                <element signature="e#3662#3663#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ElevatorTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ElevatorTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="601">
-              <caret line="89" column="5" lean-forward="true" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+            <state relative-caret-position="68">
+              <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="FloorTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ClockTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -106,20 +100,8 @@
       <file leaf-file-name="ReflectionUtils.class" pinned="false" current-in-tab="false">
         <entry file="jar://$PROJECT_DIR$/lib/junit-platform-commons-1.0.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
+            <state relative-caret-position="2941">
               <caret line="173" selection-start-line="173" selection-end-line="173" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RealTimeController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/rafles/controler/RealTimeController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -127,7 +109,7 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
+            <state relative-caret-position="102">
               <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
               <folding>
                 <element signature="e#93#94#0" expanded="true" />
@@ -151,22 +133,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Generator.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/com/company/rafles/generator/Generator.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Floor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
+            <state relative-caret-position="816">
               <caret line="55" selection-start-line="55" selection-end-line="55" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -208,12 +178,12 @@
         <option value="$PROJECT_DIR$/src/com/company/rafles/generator/IGenerator.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/entity/EntityTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/generator/Generator.java" />
-        <option value="$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java" />
-        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java" />
-        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java" />
         <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java" />
+        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java" />
+        <option value="$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java" />
+        <option value="$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java" />
       </list>
     </option>
   </component>
@@ -237,7 +207,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,6 +272,7 @@
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -340,20 +310,69 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.ElevatorTest.update">
-    <configuration name="ElevatorTest.getButtons" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.All Tests">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.company.rafles.Main" />
       <module name="elevator" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.company.rafles.elevator.*" />
+          <option name="PATTERN" value="com.company.rafles.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+    </configuration>
+    <configuration name="All Tests" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ClockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="elevator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.rafles.entity.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.company.rafles.elevator" />
-      <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.ElevatorTest" />
-      <option name="METHOD_NAME" value="getButtons" />
+      <option name="PACKAGE_NAME" value="com.company.rafles.entity" />
+      <option name="MAIN_CLASS_NAME" value="com.company.rafles.entity.ClockTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="ClockTest.pushUpdate" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="elevator" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.company.rafles.entity.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.company.rafles.entity" />
+      <option name="MAIN_CLASS_NAME" value="com.company.rafles.entity.ClockTest" />
+      <option name="METHOD_NAME" value="pushUpdate" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
@@ -364,7 +383,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="ElevatorTest.moveDown" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ElevatorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="elevator" />
       <extension name="coverage">
         <pattern>
@@ -376,8 +395,8 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.company.rafles.elevator" />
       <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.ElevatorTest" />
-      <option name="METHOD_NAME" value="moveDown" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -387,7 +406,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="ElevatorTest.releasePassengers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="FloorTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="elevator" />
       <extension name="coverage">
         <pattern>
@@ -398,55 +417,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="com.company.rafles.elevator" />
-      <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.ElevatorTest" />
-      <option name="METHOD_NAME" value="releasePassengers" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ElevatorTest.takePassengers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="elevator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.rafles.elevator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.company.rafles.elevator" />
-      <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.ElevatorTest" />
-      <option name="METHOD_NAME" value="takePassengers" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="ElevatorTest.update" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="elevator" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.company.rafles.elevator.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="com.company.rafles.elevator" />
-      <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.ElevatorTest" />
-      <option name="METHOD_NAME" value="update" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="MAIN_CLASS_NAME" value="com.company.rafles.elevator.FloorTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" />
@@ -457,19 +430,20 @@
       <patterns />
     </configuration>
     <list>
-      <item itemvalue="JUnit.ElevatorTest.moveDown" />
-      <item itemvalue="JUnit.ElevatorTest.releasePassengers" />
-      <item itemvalue="JUnit.ElevatorTest.takePassengers" />
-      <item itemvalue="JUnit.ElevatorTest.getButtons" />
-      <item itemvalue="JUnit.ElevatorTest.update" />
+      <item itemvalue="JUnit.All Tests" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="JUnit.FloorTest" />
+      <item itemvalue="JUnit.ElevatorTest" />
+      <item itemvalue="JUnit.ClockTest" />
+      <item itemvalue="JUnit.ClockTest.pushUpdate" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.ElevatorTest.update" />
-        <item itemvalue="JUnit.ElevatorTest.getButtons" />
-        <item itemvalue="JUnit.ElevatorTest.releasePassengers" />
-        <item itemvalue="JUnit.ElevatorTest.takePassengers" />
-        <item itemvalue="JUnit.ElevatorTest.moveDown" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.ClockTest.pushUpdate" />
+        <item itemvalue="JUnit.ElevatorTest" />
+        <item itemvalue="JUnit.ClockTest" />
+        <item itemvalue="JUnit.FloorTest" />
       </list>
     </recent_temporary>
   </component>
@@ -488,29 +462,12 @@
       <workItem from="1528034030867" duration="9878000" />
       <workItem from="1528046642644" duration="10524000" />
       <workItem from="1528140315584" duration="5808000" />
-      <workItem from="1528189543230" duration="10475000" />
+      <workItem from="1528189543230" duration="12213000" />
+      <workItem from="1528467935910" duration="130000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="ElevatorTest_getButtons - 2018.06.05 at 11h 48m 18s.xml">
-      <configuration name="ElevatorTest.getButtons" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ElevatorTest_getButtons - 2018.06.05 at 11h 48m 49s.xml">
-      <configuration name="ElevatorTest.getButtons" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ElevatorTest_getButtons - 2018.06.05 at 11h 48m 53s.xml">
-      <configuration name="ElevatorTest.getButtons" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ElevatorTest_getButtons - 2018.06.05 at 11h 50m 06s.xml">
-      <configuration name="ElevatorTest.getButtons" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ElevatorTest_getButtons - 2018.06.05 at 11h 50m 36s.xml">
-      <configuration name="ElevatorTest.getButtons" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="ElevatorTest_update - 2018.06.05 at 17h 35m 47s.xml">
-      <configuration name="ElevatorTest.update" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="ElevatorTest_update - 2018.06.05 at 17h 40m 33s.xml">
       <configuration name="ElevatorTest.update" configurationId="JUnit" />
     </history-entry>
@@ -523,9 +480,27 @@
     <history-entry file="ElevatorTest_update - 2018.06.05 at 17h 48m 17s.xml">
       <configuration name="ElevatorTest.update" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="ElevatorTest_update - 2018.06.05 at 17h 48m 25s.xml">
+      <configuration name="ElevatorTest.update" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="FloorTest - 2018.06.05 at 18h 11m 38s.xml">
+      <configuration name="FloorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ElevatorTest - 2018.06.05 at 18h 11m 44s.xml">
+      <configuration name="ElevatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClockTest - 2018.06.05 at 18h 11m 53s.xml">
+      <configuration name="ClockTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ElevatorTest - 2018.06.08 at 16h 26m 10s.xml">
+      <configuration name="ElevatorTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ClockTest_pushUpdate - 2018.06.08 at 16h 26m 24s.xml">
+      <configuration name="ClockTest.pushUpdate" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49265000" />
+    <option name="totallyTimeSpent" value="51133000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -550,18 +525,18 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" weight="0.3296875" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3291634" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3291634" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.3296875" />
       <window_info id="Capture Tool" order="6" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25964215" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2616302" />
       <window_info anchor="right" id="Database" order="6" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info id="Favorites" order="5" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3995309" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3995309" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
@@ -578,14 +553,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java</url>
-          <line>76</line>
-          <properties />
-          <option name="timeStamp" value="30" />
-        </line-breakpoint>
-      </breakpoints>
       <option name="time" value="31" />
     </breakpoint-manager>
   </component>
@@ -620,38 +587,12 @@
           <caret line="181" column="26" lean-forward="true" selection-start-line="181" selection-start-column="26" selection-end-line="181" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Doors#0;class#Elevator#0" />
-            <element signature="class#State#0;class#Elevator#0" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#241#286#0" />
+            <element signature="e#291#423#0" />
+            <element signature="e#1597#1598#0" expanded="true" />
             <element signature="e#1638#1639#0" expanded="true" />
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#3370#3371#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
             <element signature="e#3629#3630#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3688#3689#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#3802#3803#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4574#4575#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -699,9 +640,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding>
-            <element signature="e#233#234#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -739,38 +677,12 @@
           <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Doors#0;class#Elevator#0" />
-            <element signature="class#State#0;class#Elevator#0" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#241#286#0" />
+            <element signature="e#291#423#0" />
+            <element signature="e#1597#1598#0" expanded="true" />
             <element signature="e#1638#1639#0" expanded="true" />
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#3370#3371#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
             <element signature="e#3629#3630#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3688#3689#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#3802#3803#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4574#4575#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -851,38 +763,12 @@
           <caret line="23" column="50" lean-forward="true" selection-start-line="23" selection-start-column="50" selection-end-line="23" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Doors#0;class#Elevator#0" />
-            <element signature="class#State#0;class#Elevator#0" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#241#286#0" />
+            <element signature="e#291#423#0" />
+            <element signature="e#1597#1598#0" expanded="true" />
             <element signature="e#1638#1639#0" expanded="true" />
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#3370#3371#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
             <element signature="e#3629#3630#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3688#3689#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#3802#3803#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4574#4575#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -926,9 +812,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="38" selection-start-line="8" selection-start-column="38" selection-end-line="8" selection-end-column="38" />
-          <folding>
-            <element signature="e#233#234#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -982,28 +865,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="901">
-          <caret line="57" column="46" selection-start-line="57" selection-start-column="46" selection-end-line="57" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/FullState.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
           <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
-          <folding>
-            <element signature="e#93#94#0" expanded="true" />
-            <element signature="e#134#135#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1024,17 +889,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="26" column="23" selection-start-line="26" selection-start-column="23" selection-end-line="26" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/controler/RealTimeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="33" lean-forward="true" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
+        <state relative-caret-position="153">
+          <caret line="14" column="33" selection-start-line="14" selection-start-column="33" selection-end-line="14" selection-end-column="33" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1055,7 +913,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Floor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="816">
           <caret line="55" selection-start-line="55" selection-end-line="55" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1067,7 +925,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Entity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
+        <state relative-caret-position="221">
           <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#171#172#0" expanded="true" />
@@ -1081,49 +939,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/Elevator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="3196">
           <caret line="222" selection-start-line="222" selection-end-line="222" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="class#Doors#0;class#Elevator#0" />
-            <element signature="class#State#0;class#Elevator#0" />
-            <element signature="e#1444#1445#0" expanded="true" />
-            <element signature="e#1472#1473#0" expanded="true" />
-            <element signature="e#1287#1288#0" expanded="true" />
-            <element signature="e#1326#1327#0" expanded="true" />
-            <element signature="e#1359#1360#0" expanded="true" />
-            <element signature="e#1400#1401#0" expanded="true" />
-            <element signature="e#1593#1594#0" expanded="true" />
+            <element signature="e#241#286#0" />
+            <element signature="e#291#423#0" />
+            <element signature="e#1597#1598#0" expanded="true" />
             <element signature="e#1638#1639#0" expanded="true" />
-            <element signature="e#1678#1679#0" expanded="true" />
-            <element signature="e#1746#1747#0" expanded="true" />
-            <element signature="e#3552#3553#0" expanded="true" />
-            <element signature="e#3585#3586#0" expanded="true" />
-            <element signature="e#3622#3623#0" expanded="true" />
-            <element signature="e#3653#3654#0" expanded="true" />
-            <element signature="e#3370#3371#0" expanded="true" />
-            <element signature="e#3402#3403#0" expanded="true" />
-            <element signature="e#3445#3446#0" expanded="true" />
-            <element signature="e#3474#3475#0" expanded="true" />
-            <element signature="e#3525#3526#0" expanded="true" />
-            <element signature="e#3558#3559#0" expanded="true" />
-            <element signature="e#3594#3595#0" expanded="true" />
             <element signature="e#3629#3630#0" expanded="true" />
-            <element signature="e#3660#3661#0" expanded="true" />
-            <element signature="e#3688#3689#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3743#3744#0" expanded="true" />
-            <element signature="e#3774#3775#0" expanded="true" />
-            <element signature="e#3802#3803#0" expanded="true" />
-            <element signature="e#4511#4512#0" expanded="true" />
-            <element signature="e#4574#4575#0" expanded="true" />
+            <element signature="e#3662#3663#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/Clock.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="278">
+        <state relative-caret-position="680">
           <caret line="53" selection-start-line="53" selection-end-line="53" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1140,15 +972,40 @@
     </entry>
     <entry file="jar://$PROJECT_DIR$/lib/junit-platform-commons-1.0.0.jar!/org/junit/platform/commons/util/ReflectionUtils.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
+        <state relative-caret-position="2941">
           <caret line="173" selection-start-line="173" selection-end-line="173" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding>
+            <element signature="e#93#94#0" expanded="true" />
+            <element signature="e#134#135#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/ElevatorTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="601">
-          <caret line="89" column="5" lean-forward="true" selection-start-line="89" selection-start-column="5" selection-end-line="89" selection-end-column="5" />
+        <state relative-caret-position="68">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/elevator/FloorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="8" column="7" selection-start-line="8" selection-start-column="7" selection-end-line="8" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/company/rafles/entity/ClockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="7" selection-start-line="9" selection-start-column="7" selection-end-line="9" selection-end-column="7" />
         </state>
       </provider>
     </entry>
