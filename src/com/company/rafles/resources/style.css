@@ -1,0 +1,69 @@
+.root{
+    -fx-background-color: white;
+}
+
+.combo-box{
+    -fx-background-color: linear-gradient(#395cab, #223768);
+}
+
+.button, .list-cell{
+    -fx-background-color:
+        #000000,
+        linear-gradient(#7ebcea, #2f4b8f),
+        linear-gradient(#426ab7, #263e75),
+        linear-gradient(#395cab, #223768);
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-padding: 14 22 14 22;
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+}
+
+.list-cell{
+    -fx-padding: 10 16 10 16;
+}
+
+.button:pressed{
+    -fx-background-insets: 3 0 0 0,3 0 5 0, 3 0 6 0, 3 0 8 0;
+}
+
+.button:hover, .combo-box:hover, .list-cell:hover {
+    -fx-background-color:
+            #000000,
+            linear-gradient(#92C6FA, #5F7EC2),
+            linear-gradient(#4E7DCE, #2C4786),
+            linear-gradient(#3D62B9, #253C72);
+}
+
+.button.Text, .combo-box.Text, .list-cell.Text {
+    -fx-effect: dropshadow( one-pass-box , rgba(0,0,0,0.8) , 0, 0.0 , 0 , 1);
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+
+}
+
+.label{
+    -fx-text-fill: #3D62B9;
+    -fx-font-size: 18px;
+}
+
+.wall-separator *.line { 
+    -fx-border-style: solid;
+    -fx-border-width: 1px;
+    -fx-border-color: black;
+
+}
+
+.ceiling {
+    -fx-padding: 0 0 3 0;
+}
+
+.people-count {
+    -fx-font-size: 30px;
+    -fx-text-fill: black;
+}
+
+.inside-people-count {
+    -fx-font-size: 50px;
+    -fx-text-fill: red;
+}

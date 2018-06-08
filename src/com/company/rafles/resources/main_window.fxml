@@ -1,0 +1,126 @@
+<?import java.lang.String?>
+
+<?import javafx.scene.Group?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Separator?>
+
+<?import javafx.collections.FXCollections?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+
+
+
+<HBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller" alignment="CENTER_LEFT" spacing="10" >
+    <BorderPane>
+        <HBox.margin>
+            <Insets left="10" />
+        </HBox.margin>
+        <top>
+            <VBox spacing="10" alignment="TOP_CENTER" >
+                <BorderPane.margin>
+                    <Insets top="25.0" />
+                </BorderPane.margin>
+                <Button fx:id="startButton" text="START" onAction="#handleStartClicked" />
+                <Button fx:id="stopButton" text="STOP" onAction="#handleStopClicked" />
+                <Button fx:id="resetBotton" text="RESET" onAction="#handleResetClicked" />
+                <VBox spacing="10">
+                    <Label text="Animation speed:" />
+                    <HBox alignment="CENTER" >
+                        <Slider fx:id="animationSpeedSlider" blockIncrement="1" majorTickUnit="1" 
+                                minorTickCount="0" snapToTicks="true"  min="1" max="8" 
+                                onMouseDragged="#setAnimationSpeedLabel" /> 
+                        <Label fx:id="animationSpeedLabel" prefWidth="25" text="x1" />
+                    </HBox>
+                </VBox>
+            </VBox>
+        </top>
+        <bottom>    
+            <VBox spacing="25" alignment="BOTTOM_CENTER" >
+                <BorderPane.margin>
+                    <Insets bottom="25.0" />
+                </BorderPane.margin>
+                <VBox spacing="5" >
+                    <Label text="Select algorithm:" />
+                    <ComboBox fx:id="algorithmComboBox" prefWidth="200" />
+                </VBox>
+                <VBox spacing="5">
+                    <Label text="Select people generator:" />
+                    <ComboBox fx:id="generatorComboBox" prefWidth="200" />
+                </VBox>
+            </VBox>
+        </bottom>
+    </BorderPane>
+    <Separator orientation="VERTICAL"/> 
+
+    <GridPane vgap="5">
+        <!-- <fx:define>
+            <String fx:id="LIGHT_OFF_PATH" fx:value="/resources/images/light_off.png"/>
+            <String fx:id="LIGHT_ON_PATH" fx:value="/resources/images/light_on.png"/>
+            <String fx:id="BUTTON_UP_OFF_PATH" fx:value="/resources/images/button_up_off.png"/>
+            <String fx:id="BUTTON_UP_ON_PATH" fx:value="/resources/images/button_up_on.png"/>
+            <String fx:id="BUTTON_DOWN_OFF_PATH" fx:value="/resources/images/button_down_off.png"/>
+            <String fx:id="BUTTON_DOWN_ON_PATH" fx:value="/resources/images/button_down_on.png"/>
+            <String fx:id="ELE_OPEN_PATH" fx:value="/resources/images/ele_open.png"/>
+            <String fx:id="ELE_CLOSED_PATH" fx:value="/resources/images/ele_closed.png"/>
+            <String fx:id="STICKMAN_PATH" fx:value="/resources/images/stickman.png"/>
+        </fx:define> -->
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" spacing="2"  prefWidth="400">    
+            <GridPane.margin>
+                    <Insets top="45.0" />
+            </GridPane.margin>
+
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator, ceiling" /> 
+            <HBox fx:id="sixthFloorBox" spacing="2" alignment="CENTER_LEFT"  />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" /> 
+        </VBox>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="1" spacing="2">
+            <HBox fx:id="fifthFloorBox" spacing="2" alignment="CENTER_LEFT" />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" /> 
+        </VBox>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="2" spacing="2">
+            <HBox fx:id="fourthFloorBox" spacing="2" alignment="CENTER_LEFT" />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" /> 
+        </VBox>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="3" spacing="2">
+            <HBox fx:id="thirdFloorBox" spacing="2" alignment="CENTER_LEFT" />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" /> 
+        </VBox>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="4" spacing="2">
+            <HBox fx:id="secondFloorBox" spacing="2" alignment="CENTER_LEFT" />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" />  
+        </VBox>
+        <VBox GridPane.columnIndex="0" GridPane.rowIndex="5" spacing="2">
+            <HBox fx:id="firstFloorBox" spacing="2" alignment="CENTER_LEFT" />
+            <Separator orientation="HORIZONTAL" styleClass="wall-separator" />  
+        </VBox>
+    </GridPane>
+
+    <VBox>
+        <Label text="On floor:" />
+        <TextArea fx:id="floorToAddPerson" prefColumnCount="10" prefRowCount="1" text="5" />
+        <Button text="add person" onAction="#handleAddPerson" />
+        <Button text="remove person" onAction="#handleRemovePerson" />
+        <Button text="open elevator" onAction="#handleOpenElevator" />
+        <Button text="close elevator" onAction="#handleCloseElevator" />
+        <Button text="no buttons" onAction="#handleNoButtons" />
+        <Button text="only up" onAction="#handleOnlyUp" />
+        <Button text="only down" onAction="#handleOnlyDown" />
+        <Button text="both buttons" onAction="#handleBothButtons" />
+        <Button text="move elevator" onAction="#handleMoveElevator" />
+        <Button text="remove count" onAction="#handleRemoveCount" />
+    </VBox>
+
+</HBox>
+
