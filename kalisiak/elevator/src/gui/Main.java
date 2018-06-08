@@ -17,6 +17,8 @@ public class Main extends Application {
     private final int FLOOR_COUNT = 6;
     private final int ELEVATOR_SIZE = 2;
     
+    private RealTimeController rtc = null;
+    
     
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -27,7 +29,7 @@ public class Main extends Application {
         controller.setAlgorithms(Arrays.asList("Goliat", "Artur", "Rafał", "Karol", "Bmb"));
         controller.setGenerators(Arrays.asList("Mordor Rano", "Mordor Po Południu", "Random"));
 
-        RealTimeController rtc = new RealTimeController(FLOOR_COUNT, ELEVATOR_SIZE, controller);
+        this.rtc = new RealTimeController(FLOOR_COUNT, ELEVATOR_SIZE, controller);
         controller.setRTC(rtc);
         
         primaryStage.setTitle("Elevator Simulator");
@@ -36,6 +38,11 @@ public class Main extends Application {
         primaryStage.show();
     }
 
+    @Override
+    public void stop() throws Exception {
+        rtc.stop();
+        super.stop();
+    }
 
     public static void main(String[] args) {
         launch(args);

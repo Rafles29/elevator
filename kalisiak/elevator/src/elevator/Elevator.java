@@ -35,7 +35,7 @@ public class Elevator extends Entity {
     public Elevator(int numbFloors, Clock clock, int size, Controller controller) {
         this.numbFloors = numbFloors;
         this.clock = clock;
-        this.clock.pushUpdate(this,0);
+        this.clock.pushUpdate(this,1);
         this.listener = controller;
         this.floors = new ArrayList<>();
         for (int i=0;i<numbFloors;i++) {
@@ -47,6 +47,7 @@ public class Elevator extends Entity {
         this.state = State.STATIONARY;
         this.decision = null;
         this.passengers = new ArrayList<Passenger>();
+        this.listener.initElevator(this.currentFloor, this.passengers.size());
         this.block();
     }
 
@@ -148,7 +149,6 @@ public class Elevator extends Entity {
     }
     //Internal methods
 
-    //For Artur
     public int getNumbFloors() {
         return numbFloors;
     }
@@ -223,10 +223,10 @@ public class Elevator extends Entity {
         this.listener.newPersonOnFloor(floor);
         pressButtons(floor);
     }
-    //For Artur
+    
 
 
-    //Machine State
+    //State Machine
     @Override
     public void update() {
         
@@ -328,7 +328,7 @@ public class Elevator extends Entity {
 
         }        
     }
-    //Machine State
+    //State Machine
 
     //For Goliat
     public FullState getFullState() {

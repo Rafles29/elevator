@@ -6,13 +6,14 @@ import elevator.Passenger;
 import entity.Clock;
 import generator.Generator;
 import generator.IGenerator;
+import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
 import policy.IPolicy;
 import policy.Policy;
 
-public class RealTimeController extends Thread {
+public class RealTimeController implements Runnable {
 
     private Clock clock;
     private Elevator elevator;
@@ -21,8 +22,11 @@ public class RealTimeController extends Thread {
     private Controller controller = null;
     private int floorCount;
     private int elevatorSize;
-    private int milisPerTick = 100;
-    private boolean isRunning;
+    private int milisPerTick = 1000;
+    private boolean suspended;
+    private Thread thread;
+    
+
 
     public RealTimeController(int floorCount, int elevatorSize, Controller controller) {
         this.controller = controller;
@@ -34,15 +38,41 @@ public class RealTimeController extends Thread {
         this.milisPerTick = milis;
     }
     
-    @Override
+    public void suspend() {
+        suspended = true;
+    }
+
+    public synchronized void resume() {
+        suspended = false;
+        notify();
+    }
+    
+    public void stop(){
+        if(this.thread != null)
+            this.thread.stop();
+    }
+    
+    public void restart() {
+        if(this.thread != null) {
+            this.thread.stop();
+            this.thread = null;
+        }
+        this.controller.cleanup();
+    }
+    
     public synchronized void start() {
         this.clock = new Clock();
         this.elevator = new Elevator(this.floorCount, this.clock, this.elevatorSize, this.controller);
         this.generator = new Generator(elevator, clock);
         this.policy = new Policy(elevator);
-        this.isRunning = true;
+        this.suspended = false;
         
-        super.start();
+        System.out.println("Starting with " + Integer.toString(milisPerTick));
+        if (thread == null) {
+           System.out.println("creating new thread ");
+           thread = new Thread(this);
+           thread.start();
+        }
     }
     
     @Override
@@ -64,6 +94,7 @@ public class RealTimeController extends Thread {
             policy.decide();
         }
         */
+        
         Passenger passenger = new Passenger(1,2,0);
         Passenger passenger2 = new Passenger(0,1,0);
         Passenger passenger3 = new Passenger(1,4,0);
@@ -85,36 +116,39 @@ public class RealTimeController extends Thread {
             }
         );
 
-        while(this.isRunning) {
-            for (int i = 0;i<10;i++) {
+        while(true) {
+            for (int i = 0;i<2;i++) {
+                synchronized(this) {
+                    while(suspended) {
+                        try {
+                            wait();
+                        } catch (InterruptedException ex) {
+                            Logger.getLogger(RealTimeController.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                    }
+                }
                 while (clock.isTicking()) {
+                    final CountDownLatch latch = new CountDownLatch(1);
                     Platform.runLater(
                         () -> {
                           clock.tick();
+                          latch.countDown();
                         }
                     );
 
                     try {
-                        //sleep(clock.nextTime() * this.milisPerTick);
-                        sleep(300);
+                        latch.await();
+                        Thread.sleep(clock.nextTime() * this.milisPerTick);
+                        //Thread.sleep(100);
                         System.out.println("ticked");
                     } catch (InterruptedException ex) {
                         System.out.println("interrupted");
-                        this.isRunning = false;
                         return;
                     }
                 }
                 if (elevator.isBlocking()) {
-                    if (i == 0) elevator.openUp();
-                    if (i == 1) elevator.goDown();
-                    if (i == 2) elevator.openUp();
-                    if (i == 3) elevator.goDown();
-                    if (i == 4) elevator.openUp();
-                    if (i == 5) elevator.goDown();
-                    if (i == 6) elevator.openUp();
-                    if (i == 7) elevator.goDown();
-                    if (i == 8) elevator.openUp();
-                    if (i == 9) elevator.goDown();
+                    if (i % 2 == 0) elevator.openUp();
+                    if (i % 2 == 1) elevator.goDown();
                 }
             }
             System.out.println("done");

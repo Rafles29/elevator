@@ -25,7 +25,7 @@ public class Controller implements IListener {
     
     private List<Integer> peopleCount;
     private RealTimeController rtc;
-    private int milisPerTick;
+    private int milisPerTick = 1000;
     
     @FXML
     Slider animationSpeedSlider;
@@ -60,6 +60,7 @@ public class Controller implements IListener {
     @FXML
     public void initialize() {
         stopButton.setDisable(true);
+        resetButton.setDisable(true);
         List<HBox> floors = Arrays.asList(firstFloorBox, secondFloorBox, thirdFloorBox, 
                                     fourthFloorBox, fifthFloorBox, sixthFloorBox);
 
@@ -72,7 +73,7 @@ public class Controller implements IListener {
             elevatorPane.getChildren().addAll(createImageForUrl("ele_closed.png"),
                                               createInsidePeopleCountLabel());
             
-            floor.getChildren().addAll(createImageForUrl("light_off.png"),
+            floor.getChildren().setAll(createImageForUrl("light_off.png"),
                                        elevatorPane,
                                        buttonsBox);
         });
@@ -90,26 +91,31 @@ public class Controller implements IListener {
     public void handleStartClicked() {
         startButton.setDisable(true);
         stopButton.setDisable(false);
-        animationSpeedSlider.setDisable(true);
+        resetButton.setDisable(true);
+        //animationSpeedSlider.setDisable(true);
         algorithmComboBox.setDisable(true);
         generatorComboBox.setDisable(true);
         rtc.setMilis(this.milisPerTick);
-        rtc.start();
+        if(startButton.getText().equals("START"))
+            rtc.start();
+        else
+            rtc.resume();
+        startButton.setText("RESUME");
     }
     
     public void handleStopClicked() {
         startButton.setDisable(false);
         stopButton.setDisable(true);
-        animationSpeedSlider.setDisable(false);
+        resetButton.setDisable(false);
+        //animationSpeedSlider.setDisable(false);
         algorithmComboBox.setDisable(false);
         generatorComboBox.setDisable(false);
-        rtc.interrupt();
+        rtc.suspend();
     }
     
     public void handleResetClicked() {
-        ImageView newPerson = new ImageView();
-        newPerson.setImage(new Image(IMAGES_PATH + "stickman.png"));
-        sixthFloorBox.getChildren().add(newPerson);
+        rtc.restart();
+        startButton.setText("START");
     }
     
     public void setAlgorithms(List algorithms) {
@@ -126,63 +132,9 @@ public class Controller implements IListener {
         int sliderValue = (int)Math.round(animationSpeedSlider.valueProperty().getValue());
         animationSpeedLabel.setText("x" + sliderValue);
         this.milisPerTick = (int)(BASE_MILIS / sliderValue);
+        rtc.setMilis(this.milisPerTick);
     }
-    
-    public void handleAddPerson() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        changeNumberOfPeople(floor, 1);
-    }
-    
-    public void handleRemovePerson() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        changeNumberOfPeople(floor, -1);
-    }
-    
-    public void handleOpenElevator() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setElevatorOpen(floor, true);
-        setLightOn(floor, true);
-    }
-    
-    public void handleCloseElevator() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setElevatorOpen(floor, false);
-        setLightOn(floor, false);
-    }
-    
-    public void handleMoveElevator() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setInsideCountLabel(floor, 1); // TODO take count from args
-        setLightOn(floor, true);
-    }
-    
-    public void handleRemoveCount() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        removeInsideCountLabel(floor);
-        setLightOn(floor, false);
-    }
-    
-    public void handleNoButtons() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setButtonsOff(floor);
-    }
-    
-    public void handleOnlyUp() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setUpButtonOn(floor);
-    }
-    
-    public void handleOnlyDown() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setDownButtonOn(floor);
-    }
-    
-    public void handleBothButtons() {
-        int floor = Integer.parseInt(floorToAddPerson.getText());
-        setDownButtonOn(floor);
-        setUpButtonOn(floor);
-    }
- 
+
     private void setElevatorOpen(int floor, boolean isOpen) {
         StackPane elevatorPane = (StackPane) getFloorByInt(floor).getChildren().get(1);
         elevatorPane.getChildren().set(0, createImageForUrl(isOpen ? "ele_open.png" : "ele_closed.png"));
@@ -344,7 +296,17 @@ public class Controller implements IListener {
         setButtonsOff(floor);
     }
     
+    @Override
+    public void initElevator(int floor, int passengersCount) {
+        setInsideCountLabel(floor, passengersCount);
+        setLightOn(floor, true);
+    }
+    
     public void setRTC(RealTimeController rtc) {
         this.rtc = rtc;
+    }
+    
+    public void cleanup() {
+        initialize();
     }
 }

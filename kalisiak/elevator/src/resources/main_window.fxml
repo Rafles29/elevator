@@ -34,7 +34,7 @@
                 </BorderPane.margin>
                 <Button fx:id="startButton" text="START" onAction="#handleStartClicked" />
                 <Button fx:id="stopButton" text="STOP" onAction="#handleStopClicked" />
-                <Button fx:id="resetBotton" text="RESET" onAction="#handleResetClicked" />
+                <Button fx:id="resetButton" text="RESET" onAction="#handleResetClicked" />
                 <VBox spacing="10">
                     <Label text="Animation speed:" />
                     <HBox alignment="CENTER" >
@@ -65,17 +65,6 @@
     <Separator orientation="VERTICAL"/> 
 
     <GridPane vgap="5">
-        <!-- <fx:define>
-            <String fx:id="LIGHT_OFF_PATH" fx:value="/resources/images/light_off.png"/>
-            <String fx:id="LIGHT_ON_PATH" fx:value="/resources/images/light_on.png"/>
-            <String fx:id="BUTTON_UP_OFF_PATH" fx:value="/resources/images/button_up_off.png"/>
-            <String fx:id="BUTTON_UP_ON_PATH" fx:value="/resources/images/button_up_on.png"/>
-            <String fx:id="BUTTON_DOWN_OFF_PATH" fx:value="/resources/images/button_down_off.png"/>
-            <String fx:id="BUTTON_DOWN_ON_PATH" fx:value="/resources/images/button_down_on.png"/>
-            <String fx:id="ELE_OPEN_PATH" fx:value="/resources/images/ele_open.png"/>
-            <String fx:id="ELE_CLOSED_PATH" fx:value="/resources/images/ele_closed.png"/>
-            <String fx:id="STICKMAN_PATH" fx:value="/resources/images/stickman.png"/>
-        </fx:define> -->
         <VBox GridPane.columnIndex="0" GridPane.rowIndex="0" spacing="2"  prefWidth="400">    
             <GridPane.margin>
                     <Insets top="45.0" />
@@ -108,18 +97,7 @@
     </GridPane>
 
     <VBox>
-        <Label text="On floor:" />
-        <TextArea fx:id="floorToAddPerson" prefColumnCount="10" prefRowCount="1" text="5" />
-        <Button text="add person" onAction="#handleAddPerson" />
-        <Button text="remove person" onAction="#handleRemovePerson" />
-        <Button text="open elevator" onAction="#handleOpenElevator" />
-        <Button text="close elevator" onAction="#handleCloseElevator" />
-        <Button text="no buttons" onAction="#handleNoButtons" />
-        <Button text="only up" onAction="#handleOnlyUp" />
-        <Button text="only down" onAction="#handleOnlyDown" />
-        <Button text="both buttons" onAction="#handleBothButtons" />
-        <Button text="move elevator" onAction="#handleMoveElevator" />
-        <Button text="remove count" onAction="#handleRemoveCount" />
+        <Label text="Stats:" />
     </VBox>
 
 </HBox>

@@ -41,7 +41,7 @@ public class Clock {
     }
 
     public long nextTime() {
-        return this.timeQueue.peek().getTimeStamp();
+        return this.timeQueue.peek().getTimeStamp() - this.currentTime;
     }
 
     public void tick() {
@@ -52,6 +52,7 @@ public class Clock {
 
     public boolean isTicking() {
         return !this.timeQueue.peek().entity.isBlocking();
+
     }
 
     public void pushUpdate(IEntity entity, long timeDiff) {
