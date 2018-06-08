@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ClockTest {
+public class ClockTest {
 
     private Clock clock;
     private Entity entity;
