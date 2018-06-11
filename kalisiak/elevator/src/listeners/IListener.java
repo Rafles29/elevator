@@ -18,5 +18,5 @@ public interface IListener {
     void pressDownButton(int floor);
     void turnOffButtons(int floor);
     void initElevator(int floor, int passengersCount);
-    void updateGui(long currentTime);
+    void updateStats(long currentTime);
 }

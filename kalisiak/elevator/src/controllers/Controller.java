@@ -71,9 +71,6 @@ public class Controller implements IListener {
     HBox firstFloorBox;
     
     @FXML
-    TextArea floorToAddPerson;
-    
-    @FXML
     public void initialize() {
         stopButton.setDisable(true);
         resetButton.setDisable(true);
@@ -93,9 +90,6 @@ public class Controller implements IListener {
                                        elevatorPane,
                                        buttonsBox);
         });
-        
-        //System.out.println(avgWaitTimeLabel.getText());
-        avgWaitTimeLabel.setText("twoja stara");
         
         peopleCount = Arrays.asList(0, 0, 0, 0, 0, 0);
         peopleInside = new ArrayList<>();
@@ -334,7 +328,7 @@ public class Controller implements IListener {
     }
     
     @Override
-    public void updateGui(long currentTime) {
+    public void updateStats(long currentTime) {
         this.peopleOnFloors.stream().forEach((floor) -> {
             floor.stream().forEach((passenger) -> {
                 Long waitTime = new Long(currentTime - passenger.getTimeStamp());
