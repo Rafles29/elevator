@@ -139,7 +139,7 @@ public class RealTimeController implements Runnable {
                     try {
                         latch.await();
                         Thread.sleep(clock.nextTime() * this.milisPerTick);
-                        //Thread.sleep(100);
+                        //Thread.sleep(0);
                         //System.out.println("ticked");
                     } catch (InterruptedException ex) {
                         System.out.println("interrupted");

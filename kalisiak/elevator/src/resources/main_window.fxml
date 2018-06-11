@@ -97,9 +97,20 @@
     </GridPane>
 
     <VBox>
-        <Label text="Stats:" />
-        <Label fx:id="avgWaitTimeLabel" text="Average wait time: 0.00" />
-        <Label fx:id="avgServeTimeLabel" text="Average serve time: 0.00" />
+        <Label text="Statistics:" styleClass="stats-title-label" />
+        
+        <Label fx:id="timeElapsedLabel" styleClass="stats-label" />
+        <Label fx:id="peopleServedLabel" styleClass="stats-label" />
+        <Label fx:id="avgLoadLabel" styleClass="stats-label" />
+        <Separator orientation="HORIZONTAL" styleClass="stats-separator" /> 
+        <Label fx:id="avgWaitTimeLabel" styleClass="stats-label" />
+        <Label fx:id="maxWaitTimeLabel" styleClass="stats-label" />
+        <Separator orientation="HORIZONTAL" styleClass="stats-separator" /> 
+        <Label fx:id="avgServeTimeLabel" styleClass="stats-label" />
+        <Label fx:id="maxServeTimeLabel" styleClass="stats-label" />
+        <Separator orientation="HORIZONTAL" styleClass="stats-separator" /> 
+        <Label fx:id="avgExtraFloorsLabel" styleClass="stats-label" />
+        
     </VBox>
 
 </HBox>

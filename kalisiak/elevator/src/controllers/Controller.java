@@ -35,18 +35,36 @@ public class Controller implements IListener {
     
     private List<Passenger> peopleInside;
     private List<List<Passenger>> peopleOnFloors;
-    private Map<Integer, List<Long>> peopleWaiting;
+    private Map<Integer, Map<String, Long>> peopleStats;
+    private long currentTime;
+    private double loadSum;
+    private long peopleServed;
+    private double averageExtraFloors;
     private double averageWaitTime;
+    private long maxWaitTime;
     private double averageServeTime;    
+    private long maxServeTime;
     
     @FXML
     Slider animationSpeedSlider;
     @FXML
     Label animationSpeedLabel;
     @FXML
+    Label timeElapsedLabel;
+    @FXML
+    Label peopleServedLabel;
+    @FXML
+    Label avgLoadLabel;
+    @FXML
     Label avgWaitTimeLabel;
     @FXML
     Label avgServeTimeLabel;
+    @FXML
+    Label maxWaitTimeLabel;
+    @FXML
+    Label maxServeTimeLabel;
+    @FXML
+    Label avgExtraFloorsLabel;
     @FXML
     ComboBox algorithmComboBox;
     @FXML
@@ -91,6 +109,15 @@ public class Controller implements IListener {
                                        buttonsBox);
         });
         
+        timeElapsedLabel.setText    ("Time elapsed:         0.00");
+        peopleServedLabel.setText   ("People served:        0");
+        avgLoadLabel.setText        ("Average load:         0.00%");
+        avgWaitTimeLabel.setText    ("Average wait time:    0.00");
+        avgServeTimeLabel.setText   ("Average serve time:   0.00");
+        maxWaitTimeLabel.setText    ("Max wait time:        0.00");
+        maxServeTimeLabel.setText   ("Max serve time:       0.00");
+        avgExtraFloorsLabel.setText ("Average extra floors: 0.00");
+        
         peopleCount = Arrays.asList(0, 0, 0, 0, 0, 0);
         peopleInside = new ArrayList<>();
         peopleOnFloors = Arrays.asList(new ArrayList<Passenger>(),
@@ -99,7 +126,9 @@ public class Controller implements IListener {
                                        new ArrayList<Passenger>(),
                                        new ArrayList<Passenger>(),
                                        new ArrayList<Passenger>());
-        peopleWaiting = new HashMap<>();
+        peopleStats = new HashMap<>();
+        peopleServed = new Long(0);
+        loadSum = 0;
     }
     
     private ImageView createImageForUrl(String url) {
@@ -280,12 +309,16 @@ public class Controller implements IListener {
     public void peopleExited(int floor, int newCount, List<Passenger> passengers) {
         setInsideCountLabel(floor, newCount);
         this.peopleInside.removeAll(passengers);
+        this.peopleServed += passengers.size();
     }
     
     @Override
     public void peopleEntered(int floor, int newCount, List<Passenger> passengers) {
         setInsideCountLabel(floor, newCount);
         this.peopleInside.addAll(passengers);
+        passengers.stream().forEach((passenger) -> {
+            this.peopleStats.get(passenger.getId()).put("floorsTotal", new Long(0));
+        });
     }
 
     @Override
@@ -294,6 +327,14 @@ public class Controller implements IListener {
         setLightOn(from, false);
         setInsideCountLabel(to, passengersCount);
         setLightOn(to, true);
+        this.peopleInside.stream().forEach((passenger) -> {
+            Map<String, Long> stats = this.peopleStats.get(passenger.getId());
+            stats.put("floorsTotal", stats.get("floorsTotal") + Math.abs(to - from));
+            Long extraFloors = stats.get("floorsTotal") - Math.abs(passenger.getFrom() - passenger.getDestination());
+            if(extraFloors > 0) {
+                stats.put("floorsExtra", extraFloors);
+            }
+        });
     }
 
     @Override
@@ -328,32 +369,72 @@ public class Controller implements IListener {
     }
     
     @Override
-    public void updateStats(long currentTime) {
+    public void updateStats(long currentTime, double load) {
         this.peopleOnFloors.stream().forEach((floor) -> {
             floor.stream().forEach((passenger) -> {
                 Long waitTime = new Long(currentTime - passenger.getTimeStamp());
                 Long serveTime = new Long(currentTime - passenger.getTimeStamp());
-                this.peopleWaiting.put(passenger.getId(), Arrays.asList(waitTime, serveTime));
+                if(this.peopleStats.get(passenger.getId()) == null)
+                    this.peopleStats.put(passenger.getId(), new HashMap<String, Long>());
+                this.peopleStats.get(passenger.getId()).put("waitTime", waitTime);
+                this.peopleStats.get(passenger.getId()).put("serveTime", serveTime);
             });
         });
         
         this.peopleInside.stream().forEach((passenger) -> {
-            List<Long> waitingStats = this.peopleWaiting.get(passenger.getId());
-            waitingStats.set(1, currentTime - passenger.getTimeStamp());
+            Long serveTime = new Long(currentTime - passenger.getTimeStamp());
+            this.peopleStats.get(passenger.getId()).put("serveTime", serveTime);
+            
         });
         
-        List<List<Long>> waitTimes = new ArrayList<List<Long>>(this.peopleWaiting.values());
+        List<Map<String, Long>> stats = new ArrayList<Map<String, Long>>(this.peopleStats.values());
         // calculates the average wait and serve time from a map of all waiting people
-        this.averageWaitTime = waitTimes.stream().map(e -> e.get(0)).mapToLong(Long::longValue).average().getAsDouble();
-        this.averageServeTime = waitTimes.stream().map(e -> e.get(1)).mapToLong(Long::longValue).average().getAsDouble();
+        this.averageWaitTime = stats.stream()
+                .map(e -> e.get("waitTime"))
+                .mapToLong(Long::longValue)
+                .average()
+                .getAsDouble();
+
+        this.maxWaitTime = stats.stream()
+                .map(e -> e.get("waitTime"))
+                .mapToLong(Long::longValue)
+                .max()
+                .getAsLong();
+
+        this.averageServeTime = stats.stream()
+                .map(e -> e.get("serveTime"))
+                .mapToLong(Long::longValue)
+                .average()
+                .getAsDouble();
+
+        this.maxServeTime = stats.stream()
+                .map(e -> e.get("serveTime"))
+                .mapToLong(Long::longValue)
+                .max()
+                .getAsLong();
+
+        this.averageExtraFloors = stats.stream()
+                .map(e -> e.get("floorsExtra") != null ? e.get("floorsExtra") : new Long(0))
+                .mapToLong(Long::longValue)
+                .average()
+                .getAsDouble();
+        
+        this.currentTime = currentTime;
+        this.loadSum += load;
         
         updateGuiStats();
     }
     
     private void updateGuiStats() {
-        DecimalFormat df = new DecimalFormat("#.00");
-        avgWaitTimeLabel.setText("Average wait time: " + df.format(this.averageWaitTime));
-        avgServeTimeLabel.setText("Average serve time: " + df.format(this.averageServeTime));
+        DecimalFormat df = new DecimalFormat("#0.00");
+        timeElapsedLabel.setText    ("Time elapsed:         " + df.format(this.currentTime));
+        peopleServedLabel.setText   ("People served:        " + this.peopleServed);
+        avgLoadLabel.setText        ("Average load:         " + df.format(this.loadSum / this.currentTime * 100) + "%");
+        avgWaitTimeLabel.setText    ("Average wait time:    " + df.format(this.averageWaitTime));
+        avgServeTimeLabel.setText   ("Average serve time:   " + df.format(this.averageServeTime));
+        maxWaitTimeLabel.setText    ("Max wait time:        " + df.format(this.maxWaitTime));
+        maxServeTimeLabel.setText   ("Max serve time:       " + df.format(this.maxServeTime));
+        avgExtraFloorsLabel.setText ("Average extra floors: " + df.format(this.averageExtraFloors));
     }
     
     public void setRTC(RealTimeController rtc) {

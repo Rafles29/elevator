@@ -255,7 +255,7 @@ public class Elevator extends Entity {
     @Override
     public void update() {
         this.listeners.stream().forEach((listener) -> {
-            listener.updateStats(this.clock.getCurrentTime());
+            listener.updateStats(this.clock.getCurrentTime(), (double)this.passengers.size() / this.getSize());
         });
         switch (this.state) {
             case STATIONARY:{
