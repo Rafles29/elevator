@@ -140,7 +140,7 @@ public class RealTimeController implements Runnable {
                         latch.await();
                         Thread.sleep(clock.nextTime() * this.milisPerTick);
                         //Thread.sleep(100);
-                        System.out.println("ticked");
+                        //System.out.println("ticked");
                     } catch (InterruptedException ex) {
                         System.out.println("interrupted");
                         return;
@@ -151,7 +151,7 @@ public class RealTimeController implements Runnable {
                     if (i % 2 == 1) elevator.goDown();
                 }
             }
-            System.out.println("done");
+            //System.out.println("done");
         }
     }
 }

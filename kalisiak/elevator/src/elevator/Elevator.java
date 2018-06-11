@@ -130,7 +130,7 @@ public class Elevator extends Entity {
                 this.passengers.remove(pass);
             }
         }
-        this.listener.peopleExited(this.currentFloor, this.passengers.size());
+        this.listener.peopleExited(this.currentFloor, this.passengers.size(), passList);
     }
 
     public void takePassengers(Floor.Direction direction) {
@@ -144,8 +144,8 @@ public class Elevator extends Entity {
         passengers = currentFloor.popPassengers(direction,this.calculateSpaceLeft());
         this.passengers.addAll(passengers);
         for(int i = 0; i < passengers.size(); i++)
-            this.listener.personLeftFloor(this.currentFloor);
-        this.listener.peopleEntered(this.currentFloor, this.passengers.size());
+            this.listener.personLeftFloor(this.currentFloor, passengers.get(i));
+        this.listener.peopleEntered(this.currentFloor, this.passengers.size(), passengers);
     }
     //Internal methods
 
@@ -220,7 +220,7 @@ public class Elevator extends Entity {
     public void addPassenger(Passenger passenger) {
         int floor = passenger.getFrom();
         this.floors.get(floor).pushPassenger(passenger);
-        this.listener.newPersonOnFloor(floor);
+        this.listener.newPersonOnFloor(floor, passenger);
         pressButtons(floor);
     }
     
@@ -229,7 +229,7 @@ public class Elevator extends Entity {
     //State Machine
     @Override
     public void update() {
-        
+        this.listener.updateGui(this.clock.getCurrentTime());
         switch (this.state) {
             case STATIONARY:{
                 switch (this.decision) {

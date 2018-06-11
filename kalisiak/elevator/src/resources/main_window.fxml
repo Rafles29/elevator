@@ -98,6 +98,8 @@
 
     <VBox>
         <Label text="Stats:" />
+        <Label fx:id="avgWaitTimeLabel" text="Average wait time: 0.00" />
+        <Label fx:id="avgServeTimeLabel" text="Average serve time: 0.00" />
     </VBox>
 
 </HBox>
