@@ -22,7 +22,7 @@ public class Elevator extends Entity {
     }
     //enums
 
-    private IListener listener;
+    private ArrayList<IListener> listeners;
     private ArrayList<Floor> floors;
     private int currentFloor;
     private Doors doors;
@@ -36,7 +36,8 @@ public class Elevator extends Entity {
         this.numbFloors = numbFloors;
         this.clock = clock;
         this.clock.pushUpdate(this,1);
-        this.listener = controller;
+        this.listeners = new ArrayList<>();
+        this.listeners.add(controller);
         this.floors = new ArrayList<>();
         for (int i=0;i<numbFloors;i++) {
             this.floors.add(new Floor());
@@ -47,7 +48,9 @@ public class Elevator extends Entity {
         this.state = State.STATIONARY;
         this.decision = null;
         this.passengers = new ArrayList<Passenger>();
-        this.listener.initElevator(this.currentFloor, this.passengers.size());
+        this.listeners.stream().forEach((listener) -> {
+            listener.initElevator(this.currentFloor, this.passengers.size());
+        });
         this.block();
     }
 
@@ -59,22 +62,30 @@ public class Elevator extends Entity {
 
     public void openDoors() {
         this.doors = Doors.OPEN;
-        this.listener.openDoor(currentFloor);
-        this.listener.turnOffButtons(currentFloor);
+        this.listeners.stream().forEach((listener) -> {
+            listener.openDoor(currentFloor);
+            listener.turnOffButtons(currentFloor);
+        });
     }
 
     public void closeDoors() {
         this.doors = Doors.CLOSED;
-        this.listener.closeDoor(currentFloor);
+        this.listeners.stream().forEach((listener) -> {
+            listener.closeDoor(currentFloor);
+        });
         pressButtons(this.currentFloor);
     }
 
     private void pressButtons(int floor) {
         if (this.floors.get(floor).isButtonPressed(Floor.Direction.DOWN)) {
-            this.listener.pressDownButton(floor);
+            this.listeners.stream().forEach((listener) -> {
+                listener.pressDownButton(floor);
+            });
         }
         if (this.floors.get(floor).isButtonPressed(Floor.Direction.UP)) {
-            this.listener.pressUpButton(floor);
+            this.listeners.stream().forEach((listener) -> {
+                listener.pressUpButton(floor);
+            });
         }
     }
     
@@ -102,7 +113,9 @@ public class Elevator extends Entity {
         }
         else {
             this.currentFloor = currentFloor + 1;
-            this.listener.elevatorToFrom(this.currentFloor, this.currentFloor - 1, this.passengers.size());
+            this.listeners.stream().forEach((listener) -> {
+                listener.elevatorToFrom(this.currentFloor, this.currentFloor - 1, this.passengers.size());
+            });
         }
     }
 
@@ -115,7 +128,9 @@ public class Elevator extends Entity {
         }
         else {
             this.currentFloor = currentFloor - 1;
-            this.listener.elevatorToFrom(this.currentFloor, this.currentFloor + 1, this.passengers.size());
+            this.listeners.stream().forEach((listener) -> {
+                listener.elevatorToFrom(this.currentFloor, this.currentFloor + 1, this.passengers.size());
+            });
         }
     }
 
@@ -130,7 +145,9 @@ public class Elevator extends Entity {
                 this.passengers.remove(pass);
             }
         }
-        this.listener.peopleExited(this.currentFloor, this.passengers.size(), passList);
+        this.listeners.stream().forEach((listener) -> {
+            listener.peopleExited(this.currentFloor, this.passengers.size(), passList);
+        });
     }
 
     public void takePassengers(Floor.Direction direction) {
@@ -143,9 +160,15 @@ public class Elevator extends Entity {
 
         passengers = currentFloor.popPassengers(direction,this.calculateSpaceLeft());
         this.passengers.addAll(passengers);
-        for(int i = 0; i < passengers.size(); i++)
-            this.listener.personLeftFloor(this.currentFloor, passengers.get(i));
-        this.listener.peopleEntered(this.currentFloor, this.passengers.size(), passengers);
+        for(int i = 0; i < passengers.size(); i++) {
+            final Passenger passenger = passengers.get(i);
+            this.listeners.stream().forEach((listener) -> {
+                listener.personLeftFloor(this.currentFloor, passenger);
+            });
+        }
+        this.listeners.stream().forEach((listener) -> {
+            listener.peopleEntered(this.currentFloor, this.passengers.size(), passengers);
+        });
     }
     //Internal methods
 
@@ -157,8 +180,8 @@ public class Elevator extends Entity {
         return decision;
     }
 
-    public IListener getListener() {
-        return listener;
+    public ArrayList<IListener> getListeners() {
+        return listeners;
     }
 
     public ArrayList<Floor> getFloors() {
@@ -220,7 +243,9 @@ public class Elevator extends Entity {
     public void addPassenger(Passenger passenger) {
         int floor = passenger.getFrom();
         this.floors.get(floor).pushPassenger(passenger);
-        this.listener.newPersonOnFloor(floor, passenger);
+        this.listeners.stream().forEach((listener) -> {
+            listener.newPersonOnFloor(floor, passenger);
+        });
         pressButtons(floor);
     }
     
@@ -229,7 +254,9 @@ public class Elevator extends Entity {
     //State Machine
     @Override
     public void update() {
-        this.listener.updateGui(this.clock.getCurrentTime());
+        this.listeners.stream().forEach((listener) -> {
+            listener.updateGui(this.clock.getCurrentTime());
+        });
         switch (this.state) {
             case STATIONARY:{
                 switch (this.decision) {
