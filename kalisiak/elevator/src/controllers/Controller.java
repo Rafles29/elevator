@@ -44,6 +44,7 @@ public class Controller implements IListener {
     private long currentTime;
     private double loadSum;
     private long peopleServed;
+    private long peopleSpawned;
     private double averageExtraFloors;
     private double averageWaitTime;
     private long maxWaitTime;
@@ -60,6 +61,8 @@ public class Controller implements IListener {
     Label timeElapsedLabel;
     @FXML
     Label peopleServedLabel;
+    @FXML
+    Label peopleSpawnedLabel;
     @FXML
     Label avgLoadLabel;
     @FXML
@@ -130,6 +133,7 @@ public class Controller implements IListener {
         });
         
         timeElapsedLabel.setText    ("Time elapsed:         0.00");
+        peopleSpawnedLabel.setText  ("People arrived:       0");
         peopleServedLabel.setText   ("People served:        0");
         avgLoadLabel.setText        ("Average load:         0.00%");
         avgWaitTimeLabel.setText    ("Average wait time:    0.00");
@@ -148,6 +152,7 @@ public class Controller implements IListener {
                                        new ArrayList<Passenger>());
         peopleStats = new HashMap<>();
         peopleServed = new Long(0);
+        peopleSpawned = new Long(0);
         loadSum = 0;
     }
     
@@ -345,6 +350,7 @@ public class Controller implements IListener {
     public void newPersonOnFloor(int floor, Passenger passenger) {
         changeNumberOfPeople(floor, 1);
         this.peopleOnFloors.get(floor).add(passenger);
+        this.peopleSpawned++;
     }
 
     @Override
@@ -441,25 +447,25 @@ public class Controller implements IListener {
                 .map(e -> e.get("waitTime"))
                 .mapToLong(Long::longValue)
                 .average()
-                .getAsDouble();
+                .orElse(0.);
 
         this.maxWaitTime = stats.stream()
                 .map(e -> e.get("waitTime"))
                 .mapToLong(Long::longValue)
                 .max()
-                .getAsLong();
+                .orElse(0);
 
         this.averageServeTime = stats.stream()
                 .map(e -> e.get("serveTime"))
                 .mapToLong(Long::longValue)
                 .average()
-                .getAsDouble();
+                .orElse(0.);
 
         this.maxServeTime = stats.stream()
                 .map(e -> e.get("serveTime"))
                 .mapToLong(Long::longValue)
                 .max()
-                .getAsLong();
+                .orElse(0);
 
         this.averageExtraFloors = stats.stream()
                 .filter(e -> e.containsKey("floorsTotal"))
@@ -477,6 +483,7 @@ public class Controller implements IListener {
     private void updateGuiStats() {
         DecimalFormat df = new DecimalFormat("#0.00");
         timeElapsedLabel.setText    ("Time elapsed:         " + df.format(this.currentTime));
+        peopleSpawnedLabel.setText  ("People arrived:       " + this.peopleSpawned);
         peopleServedLabel.setText   ("People served:        " + this.peopleServed);
         avgLoadLabel.setText        ("Average load:         " + df.format(this.loadSum / this.currentTime * 100) + "%");
         avgWaitTimeLabel.setText    ("Average wait time:    " + df.format(this.averageWaitTime));

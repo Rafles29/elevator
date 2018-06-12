@@ -15,9 +15,9 @@ import java.util.concurrent.CountDownLatch;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Platform;
-import policy.FCFS;
-import policy.FCFSMomentum;
+import policy.FCFSPolicy;
 import policy.IPolicy;
+import policy.MomentumPolicy;
 import policy.Policy;
 
 public class RealTimeController implements Runnable {
@@ -54,24 +54,23 @@ public class RealTimeController implements Runnable {
     }
     
     public AbstractGenerator createGenerator(String name) {
-        AbstractGenerator generator;
-        switch (name) {
-            case "Random": generator = new RandomGenerator(this.elevator, this.clock);
-            case "Mordor Rano": generator = new MordorRanoGenerator(this.elevator, this.clock);
-            case "Mordor Wieczorem": generator = new MordorWieczorGenerator(this.elevator, this.clock);
-            default: generator = new RandomGenerator(this.elevator, this.clock);
-        }
-        return generator;
+        if(name.equals("Random"))
+            return new RandomGenerator(this.elevator, this.clock);
+        if(name.equals("Office Morning"))
+            return new MordorRanoGenerator(this.elevator, this.clock);
+        if(name.equals("Office Evening"))
+            return new MordorWieczorGenerator(this.elevator, this.clock);
+        else 
+            return new RandomGenerator(this.elevator, this.clock);
     }
     
     public IPolicy createPolicy(String name) {
-        IPolicy policy;
-        switch (name) {
-            case "FCFS": policy = new FCFS(this.elevator);
-            case "FCFS Momentum": policy = new FCFSMomentum(this.elevator);
-            default: policy = new FCFS(this.elevator);
-        }
-        return policy;
+        if(name.equals("FCFS"))
+            return new FCFSPolicy(this.elevator);
+        if(name.equals("Momentum"))
+            return new MomentumPolicy(this.elevator);
+        else 
+            return new FCFSPolicy(this.elevator);
     }
     
     public void suspend() {
@@ -101,7 +100,9 @@ public class RealTimeController implements Runnable {
         this.elevator = new Elevator(this.floorCount, this.clock, this.elevatorSize, this.controller);
         if(!isStatic)
             this.generator = createGenerator(this.controller.getGeneratorName());
+        System.out.println(this.generator);
         this.policy = createPolicy(this.controller.getPolicyName());
+        System.out.println(this.policy);
         this.suspended = false;
         
         System.out.println("Starting with " + Integer.toString(milisPerTick));
@@ -167,7 +168,6 @@ public class RealTimeController implements Runnable {
                         latch.await();
                         Thread.sleep(this.clock.nextTime() * this.milisPerTick);
                         //Thread.sleep(0);
-                        //System.out.println("ticked");
                     } catch (InterruptedException ex) {
                         System.out.println("interrupted");
                         return;

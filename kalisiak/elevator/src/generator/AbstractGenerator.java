@@ -5,12 +5,12 @@ import entity.Clock;
 import entity.Entity;
 import java.util.Random;
 
-// maybe create field lambda to allow intensity modification
 public abstract class AbstractGenerator extends Entity {
     
     protected Elevator elevator;
     protected Random rand;
     protected int nFloors;
+    protected double lambda;
 
     public AbstractGenerator(Elevator elevator, Clock clock) {
         this.elevator = elevator;
@@ -18,25 +18,22 @@ public abstract class AbstractGenerator extends Entity {
         
         rand = new Random(42);
         nFloors = elevator.getNumbFloors();
+        lambda = 0.1;
         
-        this.clock.pushUpdate(this, 0);        
+        long time = Math.round(Math.log(1-(new Random()).nextDouble())/(-lambda));
+        this.clock.pushUpdate(this, time);        
     }
     
-    /*protected static int getPoisson(double lambda) {
-        double l = Math.exp(-lambda);
-        double p = 1.0;
-        int k = 0;
+    protected final long getTime(double lambda) {
+        return  Math.round(Math.log(1-rand.nextDouble())/(-lambda));
+    }
 
-        do {
-            k++;
-            p *= Math.random();
-        } while (p > l);
+    public double getLambda() {
+        return lambda;
+    }
 
-        return k - 1;
-    }*/
-    // TODO set seed
-    protected long getTime(double lambda) {
-        return  Math.round(Math.log(1-rand.nextDouble())/(-lambda)) + 1;
+    public void setLambda(double lambda) {
+        this.lambda = lambda;
     }
     
 }

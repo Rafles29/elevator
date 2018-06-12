@@ -6,13 +6,11 @@ import entity.Clock;
 import entity.Entity;
 import java.util.ArrayList;
 
-//TODO lambda values
 public class MordorRanoGenerator extends AbstractGenerator {
 
     public MordorRanoGenerator(Elevator elevator, Clock clock) {
         super(elevator, clock);
         
-        double lambda = 0.5;
         double groundIntensity = 0.9 * lambda;
         double restIntensity = (lambda / (nFloors - 1)) * 0.1;
 

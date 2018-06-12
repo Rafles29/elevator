@@ -2,37 +2,35 @@ package policy;
 
 import elevator.Elevator;
 
-public class FCFSMomentum extends FCFS {
+public class MomentumPolicy extends FCFSPolicy {
 
     private enum Momentum {NONE, UP, DOWN}
 
     private Momentum momentum;
 
-    public FCFSMomentum(Elevator elevator) {
+    public MomentumPolicy(Elevator elevator) {
         super(elevator);
         this.momentum = Momentum.NONE;
     }
 
     @Override
-    protected void choose_next(int current_floor) {
+    protected int choose_next() {
+        int current_floor = this.elevator.getCurrentFloor();
+
         switch (this.momentum) {
             case UP:
                 for (int floor : this.floors_queue)
-                    if (floor > current_floor) {
-                        this.goUp();
-                        return;
-                    }
+                    if (floor > current_floor)
+                        return current_floor + 1;
                 break;
             case DOWN:
                 for (int floor : this.floors_queue)
-                    if (floor < current_floor) {
-                        this.goDown();
-                        return;
-                    }
+                    if (floor < current_floor)
+                        return current_floor - 1;
                 break;
         }
 
-        super.choose_next(current_floor);
+        return super.choose_next();
     }
 
     @Override

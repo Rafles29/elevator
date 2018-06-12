@@ -69,10 +69,44 @@ Inteligentne sterowanie windą nie jest nowym problemem i został już opracowan
 
 \begin{itemize}
 \item Strategia kontroli kolektywnej [1] -- w tym algorytmie winda porusza się w jednym kierunku zabierając tylko pasażerów jadących w tym samym kierunku. Gdy wszyscy pasażerowie wysiądą i nie ma następnych pasażerów znajdujących się dalej w danym kierunku niż winda, winda zmienia kierunek jeśli są jakieś inne wezwania. W przeciwnym wypadku winda będzie czekać na piętrze na którym wysiadł ostatni pasażer.
-\item Strategie przeszukujące [1] -- w odróżnieniu od poprzedniej strategii, która należy do rodziny algorytmów zachłannych, strategie przeszukujące będą analizować wiele (lub wszystkie) możliwości i ich konsekwencje, a następnie podejmować decyzje wybierając spośród możliwości tę, która najlepiej spełnia zadane kryterium optymalizacyjne np. 
+\item Strategie przeszukujące [1] -- w odróżnieniu od poprzedniej strategii, która należy do rodziny algorytmów zachłannych, strategie przeszukujące będą analizować wiele (lub wszystkie) możliwości i ich konsekwencje, a następnie podejmować decyzje wybierając spośród możliwości tę, która najlepiej spełnia zadane kryterium optymalizacyjne np. średni czas oczekiwania, średni czas obsłużenia, itp.. Strategie przeszukujące potrzebują więcej czasu na podjęcie decyzji, co może negatywnie wpływać na na średni czas oczekiwania, ale całościowo wyniki będą lepsze.
+\item Strategia oparta na regułach [1] -- jest to strategia oparta na weryfikacji logicznych zdań typu ,,JEŚLI warunek TO skutek''. Takie reguły są tworzone na podstawie wiedzy ekspertów oraz przeprowadzanych badań.
+\item Algorytm genetyczny [1] -- używając algorytmu genetycznego system sterujący windą, może ,,nauczyć się'' reagować na różne sytuacje poprzez ustawienie funkcji przystosowania zachowania jako funkcji optymalizowanego parametru np. średniego czasu oczekiwania.
+\item Model zużycia energii [2] -- jest to model oparty o optymalizację przejechanych pięter do rozwiezienia wszystkich pasażerów w danej chwili czasowej. \huge{TODO o co chodzi}
+\end{itemize}
+
+\section{Opis architektury programu}
+Symulator inteligentnego sterowania windą w naszym projekcie został zaimplementowany przy użyciu języka \textbf{Java} w wersji 8. Dodatkowo użyta została biblioteka do interfejsu graficznego użytkownika -- \textbf{JavaFx}.\\~\\
+Działanie programu można podzielić na kilka niezależnych, lecz połączonych interfejsami modułów.
+\subsection{Moduł interfejsu graficznego}
+Użycie biblioteki \textbf{JavaFx} pozwoliło na uzyskanie ładnego okna graficznego, które prezentuje przejrzysty interfejs.\\~\\
+
+includegraphics[scale=0.6]{omg.png}\\
+
+\begin{enumerate}
+	\item Przyciski sterujące rozpoczęciem i zakończeniem pracy windy, zresetowaniem windy do stanu początkowego oraz suwak służący do przyspieszania animacji
+	\item Przyciski zmieniające tryb pracy generatora ludzi (statyczny i dynamiczny) oraz ustawiający maksymalną pojemność windy
+	\item Rozsuwane listy wyboru algorytmu sterowania windą oraz wyboru generatora ludzi (tylko w przypadku trybu dynamicznego)
+	\item Obszar prezentujące aktualny stan windy
+	\item Obszar zawierające statystyki
+\end{enumerate}
+\subsection{Moduł generacji ludzi}
+Pozwala na generowanie ludzi chcących skorzystać z windy na różne sposoby. Każdy z nich jest pseudolosowy, co pozwala na weryfikację działania algorytmów  Zaimplementowane metody generowania ludzi to:
+\begin{itemize}
+	\item Random -- jest to algorytm pseudolosowy oparty o rozkład Poissona. Żadne piętro nie jest faworyzowane w tym algorytmie
+	\item Mordor Rano -- największa liczba ludzi pojawia się na piętrze 0, a sporadyczne jednostki na innych piętrach
+	\item Mordor Wieczorem -- najmniej ludzi pojawia się na piętrze 0. Pomiędzy pozostałymi piętrami rozkład ludzi jest podobny
+\end{itemize}
+\subsection{Moduł kontroli windy}
+\subsection{Moduł algorytmów sterowania windą}
+Pozwala na wybór algorytmu służącego do dawania rozkazów do modułu kontroli windą. Zaimplementowane algorytmy to:
+\begin{itemize}
+	\item FCFS(First Come First Serve) -- Algorytm ten stara się jechać do pierwszego zgłoszenia, realizując po drodze śmieci
+	\item FCFS Momentum -- A to dodaje jeszcze momentum jebentum
 \end{itemize}
 
 \section{Bibliografia}
 [1] https://www.diva-portal.org/smash/get/diva2:668654/FULLTEXT01.pdf
+[2] http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group3Johan/report/alexandra.nordin.frederick.ceder.report.pdf
 
 \end{document}

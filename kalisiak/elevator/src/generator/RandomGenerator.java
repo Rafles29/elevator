@@ -20,7 +20,7 @@ public class RandomGenerator extends AbstractGenerator {
         } while (to == from);
 
         elevator.addPassenger(new Passenger(from, to, clock.getCurrentTime()));
-        long time = getTime(0.5);
+        long time = getTime(lambda);
         clock.pushUpdate(this, time);
     }
 }

@@ -298,6 +298,7 @@ public class Elevator extends Entity {
                     case STAY: {
                         this.clock.pushUpdate(this,1);
                         this.clearDecision();
+                        break;
                     }
                     default: {
                         block();

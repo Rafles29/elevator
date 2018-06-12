@@ -61,7 +61,7 @@
                     <Label text="Select elevator capacity:" />
                     <Spinner fx:id="elevatorCapSpinner">
                         <valueFactory>
-                            <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="15" initialValue="8"/>
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="1000" initialValue="8"/>
                         </valueFactory>
                     </Spinner>
                 </VBox>
@@ -114,6 +114,7 @@
         <Label text="Statistics:" styleClass="stats-title-label" />
         
         <Label fx:id="timeElapsedLabel" styleClass="stats-label" />
+        <Label fx:id="peopleSpawnedLabel" styleClass="stats-label" />
         <Label fx:id="peopleServedLabel" styleClass="stats-label" />
         <Label fx:id="avgLoadLabel" styleClass="stats-label" />
         <Separator orientation="HORIZONTAL" styleClass="stats-separator" /> 

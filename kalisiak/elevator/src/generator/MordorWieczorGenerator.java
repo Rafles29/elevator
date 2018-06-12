@@ -11,9 +11,8 @@ public class MordorWieczorGenerator extends AbstractGenerator {
     public MordorWieczorGenerator(Elevator elevator, Clock clock) {
         super(elevator, clock);
         
-        double lambda = 0.5;
-        double groundIntensity = 0.05 * lambda;
-        double restIntensity = (lambda / (nFloors - 1)) * 0.95;
+        double groundIntensity = 0.075 * lambda;
+        double restIntensity = (lambda / (nFloors - 1)) * 0.925;
 
         ArrayList<Entity> floors = new ArrayList<>();
         AbstractGenerator ground = new AbstractGenerator(this.elevator, this.clock) {
