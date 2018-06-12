@@ -462,8 +462,8 @@ public class Controller implements IListener {
                 .getAsLong();
 
         this.averageExtraFloors = stats.stream()
-                .filter(e -> e.containsKey("floorsExtra"))
-                .map(e -> e.get("floorsExtra"))
+                .filter(e -> e.containsKey("floorsTotal"))
+                .map(e -> e.containsKey("floorsExtra") ? e.get("floorsExtra") : new Long(0))
                 .mapToLong(Long::longValue)
                 .average()
                 .orElse(0.);
