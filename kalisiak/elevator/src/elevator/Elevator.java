@@ -64,7 +64,7 @@ public class Elevator extends Entity {
         this.doors = Doors.OPEN;
         this.listeners.stream().forEach((listener) -> {
             listener.openDoor(currentFloor);
-            listener.turnOffButtons(currentFloor);
+            //listener.turnOffButtons(currentFloor);
         });
     }
 
@@ -170,7 +170,9 @@ public class Elevator extends Entity {
         }
         this.listeners.stream().forEach((listener) -> {
             listener.peopleEntered(this.currentFloor, this.passengers.size(), passengers);
+            listener.turnOffButtons(this.currentFloor);
         });
+        pressButtons(this.currentFloor);
     }
     //Internal methods
 

@@ -72,6 +72,8 @@
                 <VBox spacing="5">
                     <Label fx:id="generatorLabel" text="Select people generator:" />
                     <ComboBox fx:id="generatorComboBox" prefWidth="200" />
+                    <Label fx:id="intensityLabel" text="Select generator intensity:" />
+                    <ComboBox fx:id="intensityComboBox" prefWidth="200" onAction="#handleChangeIntensity"/>
                 </VBox>
             </VBox>
         </bottom>

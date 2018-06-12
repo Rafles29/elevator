@@ -26,8 +26,9 @@ public class Main extends Application {
         Parent root = (Parent)loader.load();
         
         Controller controller = loader.<Controller>getController();
-        controller.setAlgorithms(Arrays.asList("FCFS", "Momentum"));
+        controller.setAlgorithms(Arrays.asList("First Call First Serve", "Momentum", "Morning"));
         controller.setGenerators(Arrays.asList("Random", "Office Morning", "Office Evening"));
+        controller.setIntensities(Arrays.asList("Small", "Average", "Large", "Huge"));
 
         this.rtc = new RealTimeController(FLOOR_COUNT, ELEVATOR_SIZE, controller);
         controller.setRTC(rtc);

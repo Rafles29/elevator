@@ -58,6 +58,8 @@ public class Controller implements IListener {
     @FXML
     Label generatorLabel;
     @FXML
+    Label intensityLabel;
+    @FXML
     Label timeElapsedLabel;
     @FXML
     Label peopleServedLabel;
@@ -79,6 +81,8 @@ public class Controller implements IListener {
     ComboBox algorithmComboBox;
     @FXML
     ComboBox generatorComboBox;
+    @FXML
+    ComboBox intensityComboBox;
     @FXML
     Button startButton;
     @FXML
@@ -205,12 +209,30 @@ public class Controller implements IListener {
             staticToggleButton.setText("Switch to dynamic");
             generatorComboBox.setVisible(false);
             generatorLabel.setVisible(false);
+            intensityComboBox.setVisible(false);
+            intensityLabel.setVisible(false);
         } else {
             this.isStatic = false;
             staticToggleButton.setText("Switch to static");
             generatorComboBox.setVisible(true);
             generatorLabel.setVisible(true);
+            intensityComboBox.setVisible(true);
+            intensityLabel.setVisible(true);
         }
+    }
+    
+    public void handleChangeIntensity() {
+        String name = intensityComboBox.getValue().toString();
+        double lambda;
+        if(name.equals("Small"))
+            lambda = 0.05;
+        else if(name.equals("Average"))
+            lambda = 0.1;
+        else if(name.equals("Large"))
+            lambda = 0.15;
+        else
+            lambda = 0.2;
+        this.rtc.setLambda(lambda);
     }
     
     public String getGeneratorName() {
@@ -229,6 +251,11 @@ public class Controller implements IListener {
     public void setGenerators(List generators) {
         generatorComboBox.getItems().setAll(generators);
         generatorComboBox.setValue(generators.get(0));
+    }
+    
+    public void setIntensities(List intensities) {
+        intensityComboBox.getItems().setAll(intensities);
+        intensityComboBox.setValue(intensities.get(1));
     }
     
     public void setAnimationSpeedLabel() {
@@ -257,10 +284,14 @@ public class Controller implements IListener {
         elevatorPane.getChildren().set(1, createInsidePeopleCountLabel());
     }
     
-    private void setButtonsOff(int floor) {
+    private void setUpButtonOff(int floor) {
         VBox box = (VBox) getFloorByInt(floor).getChildren().get(2);
-        box.getChildren().setAll(createImageForUrl("button_up_off.png"),
-                                 createImageForUrl("button_down_off.png"));
+        box.getChildren().set(0, createImageForUrl("button_up_off.png"));
+    }
+    
+    private void setDownButtonOff(int floor) {
+        VBox box = (VBox) getFloorByInt(floor).getChildren().get(2);
+        box.getChildren().set(1, createImageForUrl("button_down_off.png"));
     }
     
     private void setUpButtonOn(int floor) {
@@ -413,7 +444,8 @@ public class Controller implements IListener {
 
     @Override
     public void turnOffButtons(int floor) {
-        setButtonsOff(floor);
+        setDownButtonOff(floor);
+        setUpButtonOff(floor);
     }
     
     @Override

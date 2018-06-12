@@ -18,6 +18,7 @@ import javafx.application.Platform;
 import policy.FCFSPolicy;
 import policy.IPolicy;
 import policy.MomentumPolicy;
+import policy.MorningPolicy;
 import policy.Policy;
 
 public class RealTimeController implements Runnable {
@@ -29,6 +30,7 @@ public class RealTimeController implements Runnable {
     private Controller controller = null;
     private int floorCount;
     private int elevatorSize;
+    private double lambda = 0.1;
     private int milisPerTick = 1000;
     private boolean isStatic;
     private boolean suspended;
@@ -53,6 +55,12 @@ public class RealTimeController implements Runnable {
         this.isStatic = isStatic;
     }
     
+    public void setLambda(double lambda) {
+        this.lambda = lambda;
+        if(this.generator != null) 
+            this.generator.setLambda(this.lambda);
+    }
+    
     public AbstractGenerator createGenerator(String name) {
         if(name.equals("Random"))
             return new RandomGenerator(this.elevator, this.clock);
@@ -69,6 +77,8 @@ public class RealTimeController implements Runnable {
             return new FCFSPolicy(this.elevator);
         if(name.equals("Momentum"))
             return new MomentumPolicy(this.elevator);
+        if(name.equals("Morning"))
+            return new MorningPolicy(this.elevator);
         else 
             return new FCFSPolicy(this.elevator);
     }
@@ -98,8 +108,10 @@ public class RealTimeController implements Runnable {
     public synchronized void start() {
         this.clock = new Clock();
         this.elevator = new Elevator(this.floorCount, this.clock, this.elevatorSize, this.controller);
-        if(!isStatic)
+        if(!isStatic) {
             this.generator = createGenerator(this.controller.getGeneratorName());
+            this.generator.setLambda(this.lambda);
+        }
         System.out.println(this.generator);
         this.policy = createPolicy(this.controller.getPolicyName());
         System.out.println(this.policy);
