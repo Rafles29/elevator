@@ -145,6 +145,8 @@ public class Elevator extends Entity {
                 this.passengers.remove(pass);
             }
         }
+        
+        passList.removeAll(this.passengers);
         this.listeners.stream().forEach((listener) -> {
             listener.peopleExited(this.currentFloor, this.passengers.size(), passList);
         });

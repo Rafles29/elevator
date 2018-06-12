@@ -14,6 +14,9 @@
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Spinner ?>
+<?import javafx.scene.control.* ?>
+
 
 <?import javafx.collections.FXCollections?>
 
@@ -39,9 +42,9 @@
                     <Label text="Animation speed:" />
                     <HBox alignment="CENTER" >
                         <Slider fx:id="animationSpeedSlider" blockIncrement="1" majorTickUnit="1" 
-                                minorTickCount="0" snapToTicks="true"  min="1" max="8" 
-                                onMouseDragged="#setAnimationSpeedLabel" /> 
-                        <Label fx:id="animationSpeedLabel" prefWidth="25" text="x1" />
+                                minorTickCount="0" snapToTicks="true"  min="1" max="16" 
+                                onMouseDragged="#setAnimationSpeedLabel" onMouseClicked="#setAnimationSpeedLabel" /> 
+                        <Label fx:id="animationSpeedLabel" prefWidth="30" text="x1" />
                     </HBox>
                 </VBox>
             </VBox>
@@ -51,12 +54,23 @@
                 <BorderPane.margin>
                     <Insets bottom="25.0" />
                 </BorderPane.margin>
+                <VBox spacing="5" alignment="CENTER" >
+                    <Button fx:id="staticToggleButton" text="Switch to static" onAction="#handleStaticClicked"/>
+                </VBox>
+                <VBox spacing="5" >
+                    <Label text="Select elevator capacity:" />
+                    <Spinner fx:id="elevatorCapSpinner">
+                        <valueFactory>
+                            <SpinnerValueFactory.IntegerSpinnerValueFactory min="1" max="15" initialValue="8"/>
+                        </valueFactory>
+                    </Spinner>
+                </VBox>
                 <VBox spacing="5" >
                     <Label text="Select algorithm:" />
                     <ComboBox fx:id="algorithmComboBox" prefWidth="200" />
                 </VBox>
                 <VBox spacing="5">
-                    <Label text="Select people generator:" />
+                    <Label fx:id="generatorLabel" text="Select people generator:" />
                     <ComboBox fx:id="generatorComboBox" prefWidth="200" />
                 </VBox>
             </VBox>

@@ -9,12 +9,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Consumer;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -32,6 +35,8 @@ public class Controller implements IListener {
     private List<Integer> peopleCount;
     private RealTimeController rtc;
     private int milisPerTick = 1000;
+    private int elevatorCap = 8;
+    private boolean isStatic = false;
     
     private List<Passenger> peopleInside;
     private List<List<Passenger>> peopleOnFloors;
@@ -49,6 +54,8 @@ public class Controller implements IListener {
     Slider animationSpeedSlider;
     @FXML
     Label animationSpeedLabel;
+    @FXML
+    Label generatorLabel;
     @FXML
     Label timeElapsedLabel;
     @FXML
@@ -76,6 +83,8 @@ public class Controller implements IListener {
     @FXML
     Button resetButton;
     @FXML
+    Button staticToggleButton;
+    @FXML
     HBox sixthFloorBox;
     @FXML
     HBox fifthFloorBox;
@@ -87,6 +96,8 @@ public class Controller implements IListener {
     HBox secondFloorBox;
     @FXML
     HBox firstFloorBox;
+    @FXML
+    Spinner elevatorCapSpinner;
     
     @FXML
     public void initialize() {
@@ -107,6 +118,15 @@ public class Controller implements IListener {
             floor.getChildren().setAll(createImageForUrl("light_off.png"),
                                        elevatorPane,
                                        buttonsBox);
+        });
+        
+        elevatorCapSpinner.getStyleClass().add(Spinner.STYLE_CLASS_ARROWS_ON_RIGHT_HORIZONTAL);
+        elevatorCapSpinner.valueProperty().addListener(new ChangeListener<Integer>() {
+            @Override
+            public void changed(ObservableValue<? extends Integer> observable,//
+                    Integer oldValue, Integer newValue) {          
+                elevatorCap = newValue; 
+            }
         });
         
         timeElapsedLabel.setText    ("Time elapsed:         0.00");
@@ -142,12 +162,17 @@ public class Controller implements IListener {
         startButton.setDisable(true);
         stopButton.setDisable(false);
         resetButton.setDisable(true);
+        elevatorCapSpinner.setDisable(true);
         //animationSpeedSlider.setDisable(true);
         algorithmComboBox.setDisable(true);
         generatorComboBox.setDisable(true);
+        staticToggleButton.setDisable(true);
         rtc.setMilis(this.milisPerTick);
-        if(startButton.getText().equals("START"))
+        if(startButton.getText().equals("START")) {
+            rtc.setElevatorSize(this.elevatorCap);
+            rtc.setIsStatic(this.isStatic);
             rtc.start();
+        }
         else
             rtc.resume();
         startButton.setText("RESUME");
@@ -157,15 +182,38 @@ public class Controller implements IListener {
         startButton.setDisable(false);
         stopButton.setDisable(true);
         resetButton.setDisable(false);
-        //animationSpeedSlider.setDisable(false);
-        algorithmComboBox.setDisable(false);
-        generatorComboBox.setDisable(false);
         rtc.suspend();
     }
     
     public void handleResetClicked() {
         rtc.restart();
         startButton.setText("START");
+        elevatorCapSpinner.setDisable(false);
+        algorithmComboBox.setDisable(false);
+        generatorComboBox.setDisable(false);
+        staticToggleButton.setDisable(false);
+    }
+    
+    public void handleStaticClicked() {
+        if("Switch to static".equals(staticToggleButton.getText())) {
+            this.isStatic = true;
+            staticToggleButton.setText("Switch to dynamic");
+            generatorComboBox.setVisible(false);
+            generatorLabel.setVisible(false);
+        } else {
+            this.isStatic = false;
+            staticToggleButton.setText("Switch to static");
+            generatorComboBox.setVisible(true);
+            generatorLabel.setVisible(true);
+        }
+    }
+    
+    public String getGeneratorName() {
+        return generatorComboBox.getValue().toString();
+    }
+    
+    public String getPolicyName() {
+        return algorithmComboBox.getValue().toString();
     }
     
     public void setAlgorithms(List algorithms) {
@@ -414,10 +462,11 @@ public class Controller implements IListener {
                 .getAsLong();
 
         this.averageExtraFloors = stats.stream()
-                .map(e -> e.get("floorsExtra") != null ? e.get("floorsExtra") : new Long(0))
+                .filter(e -> e.containsKey("floorsExtra"))
+                .map(e -> e.get("floorsExtra"))
                 .mapToLong(Long::longValue)
                 .average()
-                .getAsDouble();
+                .orElse(0.);
         
         this.currentTime = currentTime;
         this.loadSum += load;
@@ -435,6 +484,21 @@ public class Controller implements IListener {
         maxWaitTimeLabel.setText    ("Max wait time:        " + df.format(this.maxWaitTime));
         maxServeTimeLabel.setText   ("Max serve time:       " + df.format(this.maxServeTime));
         avgExtraFloorsLabel.setText ("Average extra floors: " + df.format(this.averageExtraFloors));
+    }
+    
+    public Map<String, Double> getStats() {
+        Map<String, Double> stats = new HashMap<>();
+        
+        stats.put("timeElapsed", new Double(this.currentTime));
+        stats.put("peopleServed", new Double(this.peopleServed));
+        stats.put("avgLoad", new Double(this.loadSum / this.currentTime));
+        stats.put("avgWait", new Double(this.averageWaitTime));
+        stats.put("maxWait", new Double(this.maxWaitTime));
+        stats.put("avgServe", new Double(this.averageServeTime));
+        stats.put("maxServe", new Double(this.maxServeTime));
+        stats.put("avgExtraFloors", new Double(this.averageExtraFloors));
+        
+        return stats;
     }
     
     public void setRTC(RealTimeController rtc) {

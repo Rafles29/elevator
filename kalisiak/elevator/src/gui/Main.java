@@ -26,8 +26,8 @@ public class Main extends Application {
         Parent root = (Parent)loader.load();
         
         Controller controller = loader.<Controller>getController();
-        controller.setAlgorithms(Arrays.asList("Goliat", "Artur", "Rafał", "Karol", "Bmb"));
-        controller.setGenerators(Arrays.asList("Mordor Rano", "Mordor Po Południu", "Random"));
+        controller.setAlgorithms(Arrays.asList("FCFS", "FCFS Momentum"));
+        controller.setGenerators(Arrays.asList("Random", "Mordor Rano", "Mordor Wieczorem"));
 
         this.rtc = new RealTimeController(FLOOR_COUNT, ELEVATOR_SIZE, controller);
         controller.setRTC(rtc);

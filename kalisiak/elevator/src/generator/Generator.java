@@ -2,8 +2,9 @@ package generator;
 
 import elevator.Elevator;
 import entity.Clock;
+import entity.Entity;
 
-public class Generator implements IGenerator{
+public abstract class Generator extends Entity{
 
     private Elevator elevator;
     private Clock clock;
