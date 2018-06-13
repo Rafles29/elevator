@@ -97,7 +97,7 @@ Użycie biblioteki \textbf{JavaFx} pozwoliło na uzyskanie ładnego okna graficz
 \subsection{Moduł kontroli windy}
 Zajmuje się przechowywaniem oraz modyfikacją aktualnego stanu windy za pomocą maszyny stanów. Przechowuje on także informacje o ludziach znajdujących się na poszczególnych piętrach oraz w windzie.  Generuje zdarzenia, które dopisywane są do kolejki zdarzeń w module zegara.
 \subsection{Moduł zegara}
-Zarządza zdarzeniami z poszczególnych modułów, które dzięki działaniu zegara, odbywają się w predefiniowanych chwilach czasowych. Każde zdarzenie w systemie zajmuje określoną liczbę tyknięć zegara, co symuluje upływ czasu.
+Zarządza zdarzeniami z poszczególnych modułów, które dzięki działaniu zegara, odbywają się w predefiniowanych chwilach czasowych. Każde zdarzenie w systemie zajmuje określoną liczbę tyknięć zegara, co symuluje upływ czasu (na przykład przejechanie piętra trwa dłużej niż otworzenie drzwi).
 \subsection{Moduł generacji ludzi}
 Pozwala na generowanie ludzi chcących skorzystać z windy na różne sposoby. Każdy z algorytmów bazuje na rozkładzie Poissona, którego parametr lambda można modyfikować przy użyciu interfejsu graficznego (poprzez zmianę intensywności generatora). Zaimplementowane metody generowania ludzi to:
 \begin{itemize}
@@ -125,6 +125,15 @@ Zajmuje się wyliczaniem statystyk widocznych w obszarze statystyk. Są to (każ
 	\item Max serve time -- najdłuższy czas obsłużenia osoby
 	\item Average extra floors -- średnia liczba pięter przejechanych ponad najmniejszą możliwą liczbę pięter dla każdego pasażera
 \end{itemize}
+
+\section{Testowanie statyczne}
+Zaczęliśmy od przetestowania algorytmów w wersji statycznej, to znaczy ludzie byli wygenerowani na samym początku symulacji, a w później generator był wyłączony i nowi ludzie nie pojawiali się. Winda zaczynała zawsze z parteru. Rozkład ludzi na którym testowaliśmy algorytmy to:
+\begin{itemize}
+\item 1 osoba na parterze chcąca jechać na piąte piętro
+\item 2 osoby na pierwszym piętrze, z których jedna chce jechać na trzecie piętro, a druga na parter
+\item 6 osób na trzecim pięrze, z których jedna chce jechać na pierwsze piętro, a pozostałe na piąte piętro
+\end{itemize}
+
 
 \section{Bibliografia}
 [1] https://www.diva-portal.org/smash/get/diva2:668654/FULLTEXT01.pdf

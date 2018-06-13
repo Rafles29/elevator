@@ -267,10 +267,10 @@ public class Elevator extends Entity {
                     case OPENDOORS:{
                         if(this.isDoorsOpen()) {
                             block();
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                         } else {
                             this.state = State.DOORS_OPENNING;
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                             this.clearDecision();
                         }
                         return;
@@ -278,10 +278,10 @@ public class Elevator extends Entity {
                     case MOVEUP:{
                         if(this.isDoorsOpen()) {
                             this.state = State.GETTING_IN_PEOPLE;
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                         } else {
                             this.state = State.MOVING_UP;
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                             this.clearDecision();
                         }
                         return;
@@ -289,10 +289,10 @@ public class Elevator extends Entity {
                     case MOVEDOWN:{
                         if(this.isDoorsOpen()) {
                             this.state = State.GETTING_IN_PEOPLE;
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                         } else {
                             this.state = State.MOVING_DOWN;
-                            this.clock.pushUpdate(this,1);
+                            this.clock.pushUpdate(this,0);
                             this.clearDecision();
                         }
                         return;
@@ -304,7 +304,7 @@ public class Elevator extends Entity {
                     }
                     default: {
                         block();
-                        this.clock.pushUpdate(this,1);
+                        this.clock.pushUpdate(this,0);
                         break;
                     }
                 }
@@ -325,13 +325,13 @@ public class Elevator extends Entity {
             case MOVING_UP:{
                 this.moveUp();
                 this.state = State.STATIONARY;
-                this.clock.pushUpdate(this,1);
+                this.clock.pushUpdate(this,3);
                 return;
             }
             case MOVING_DOWN:{
                 this.moveDown();
                 this.state = State.STATIONARY;
-                this.clock.pushUpdate(this,1);
+                this.clock.pushUpdate(this,3);
                 return;
             }
             case GETTING_OUT_PEOPLE:{
