@@ -147,12 +147,15 @@ public class RealTimeController implements Runnable {
 
         if(isStatic) {            
             Platform.runLater( () -> {
-                this.elevator.addPassenger(new Passenger(4,1,0));
-                this.elevator.addPassenger(new Passenger(1,2,0));
-                this.elevator.addPassenger(new Passenger(0,1,0));
-                this.elevator.addPassenger(new Passenger(1,0,0)); 
-                this.elevator.addPassenger(new Passenger(3,5,0));   
-                   
+                this.elevator.addPassenger(new Passenger(0,5,0));
+                this.elevator.addPassenger(new Passenger(1,3,0));
+                this.elevator.addPassenger(new Passenger(1,0,0));
+                this.elevator.addPassenger(new Passenger(3,1,0)); 
+                this.elevator.addPassenger(new Passenger(3,5,0));
+                this.elevator.addPassenger(new Passenger(3,5,0));
+                this.elevator.addPassenger(new Passenger(3,5,0));
+                this.elevator.addPassenger(new Passenger(3,5,0));
+                this.elevator.addPassenger(new Passenger(3,5,0));
             });
         }
 

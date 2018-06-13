@@ -35,14 +35,14 @@ public class Elevator extends Entity {
     public Elevator(int numbFloors, Clock clock, int size, Controller controller) {
         this.numbFloors = numbFloors;
         this.clock = clock;
-        this.clock.pushUpdate(this,1);
+        this.clock.pushUpdate(this,0);
         this.listeners = new ArrayList<>();
         this.listeners.add(controller);
         this.floors = new ArrayList<>();
         for (int i=0;i<numbFloors;i++) {
             this.floors.add(new Floor());
         }
-        this.currentFloor = 3; // TODO change
+        this.currentFloor = 0;
         this.doors = Doors.CLOSED;
         this.size = size;
         this.state = State.STATIONARY;

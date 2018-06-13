@@ -6,9 +6,12 @@
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/AbstractGenerator.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/elevator/Elevator.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/IGenerator.java</file>
+            <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/MordorWieczorGenerator.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/entity/IEntity.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/entity/Entity.java</file>
+            <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/policy/FCFSPolicy.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/listeners/IListener.java</file>
+            <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/MordorRanoGenerator.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/resources/style.css</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/elevator/Passenger.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/Generator.java</file>
@@ -18,7 +21,9 @@
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/resources/main_window.fxml</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/generator/RandomGenerator.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/controler/RealTimeController.java</file>
+            <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/policy/MorningPolicy.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/gui/Main.java</file>
+            <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/policy/MomentumPolicy.java</file>
             <file>file:/E:/STUDIA/Systemy%20Wbudowane%20i%20Czasu%20Rzeczywistego/elevator/kalisiak/elevator/src/policy/Policy.java</file>
         </group>
     </open-files>

@@ -20,12 +20,21 @@ public class FCFSPolicy extends Policy {
     public void decide() {
         int current_floor = this.elevator.getCurrentFloor();
         int next_floor = this.choose_next();
-   
+      
         if (this.elevator.isDoorsOpen() && current_floor == next_floor) {
             this.floors_queue.remove(current_floor);
             next_floor = this.choose_next();
         }
-        
+        if (this.elevator.isDoorsOpen() && floors_queue.size() == 1) {
+            if(floors_queue.peek() < current_floor && this.isUpPresed() && !this.isDownPresed()) {
+                this.goToFloor(current_floor + 1);
+                return;
+            }
+            if(floors_queue.peek() > current_floor && this.isDownPresed() && !this.isUpPresed()) {
+                this.goToFloor(current_floor - 1);
+                return;
+            }            
+        }
         if (this.elevator.isDoorsOpen()) 
             this.goToFloor(next_floor);
         else if (current_floor == next_floor)
