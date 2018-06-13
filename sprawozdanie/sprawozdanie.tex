@@ -72,7 +72,7 @@ Inteligentne sterowanie windą nie jest nowym problemem i został już opracowan
 \item Strategie przeszukujące [1] -- w odróżnieniu od poprzedniej strategii, która należy do rodziny algorytmów zachłannych, strategie przeszukujące będą analizować wiele (lub wszystkie) możliwości i ich konsekwencje, a następnie podejmować decyzje wybierając spośród możliwości tę, która najlepiej spełnia zadane kryterium optymalizacyjne np. średni czas oczekiwania, średni czas obsłużenia, itp.. Strategie przeszukujące potrzebują więcej czasu na podjęcie decyzji, co może negatywnie wpływać na na średni czas oczekiwania, ale całościowo wyniki będą lepsze.
 \item Strategia oparta na regułach [1] -- jest to strategia oparta na weryfikacji logicznych zdań typu ,,JEŚLI warunek TO skutek''. Takie reguły są tworzone na podstawie wiedzy ekspertów oraz przeprowadzanych badań.
 \item Algorytm genetyczny [1] -- używając algorytmu genetycznego system sterujący windą, może ,,nauczyć się'' reagować na różne sytuacje poprzez ustawienie funkcji przystosowania zachowania jako funkcji optymalizowanego parametru np. średniego czasu oczekiwania.
-\item Model zużycia energii [2] -- jest to model oparty o optymalizację przejechanych pięter do rozwiezienia wszystkich pasażerów w danej chwili czasowej. \huge{TODO o co chodzi}
+\item Model zużycia energii [2] -- jest to model oparty o optymalizację przejechanych pięter do rozwiezienia wszystkich pasażerów w danej chwili czasowej.
 \end{itemize}
 
 \section{Opis architektury programu}
@@ -81,32 +81,54 @@ Działanie programu można podzielić na kilka niezależnych, lecz połączonych
 \subsection{Moduł interfejsu graficznego}
 Użycie biblioteki \textbf{JavaFx} pozwoliło na uzyskanie ładnego okna graficznego, które prezentuje przejrzysty interfejs.\\~\\
 
-includegraphics[scale=0.6]{omg.png}\\
+\begin{figure}[H]
+    \centering
+    \caption{Okno główne}
+    \includegraphics[width=\textwidth]{okno.png}
+\end{figure}
 
 \begin{enumerate}
 	\item Przyciski sterujące rozpoczęciem i zakończeniem pracy windy, zresetowaniem windy do stanu początkowego oraz suwak służący do przyspieszania animacji
 	\item Przyciski zmieniające tryb pracy generatora ludzi (statyczny i dynamiczny) oraz ustawiający maksymalną pojemność windy
-	\item Rozsuwane listy wyboru algorytmu sterowania windą oraz wyboru generatora ludzi (tylko w przypadku trybu dynamicznego)
-	\item Obszar prezentujące aktualny stan windy
-	\item Obszar zawierające statystyki
+	\item Rozsuwane listy wyboru algorytmu sterowania windą oraz wyboru generatora ludzi i jego intensywności generacji (tylko w przypadku trybu dynamicznego)
+	\item Obszar prezentujący aktualny stan windy
+	\item Obszar zawierający statystyki
 \end{enumerate}
-\subsection{Moduł generacji ludzi}
-Pozwala na generowanie ludzi chcących skorzystać z windy na różne sposoby. Każdy z nich jest pseudolosowy, co pozwala na weryfikację działania algorytmów  Zaimplementowane metody generowania ludzi to:
-\begin{itemize}
-	\item Random -- jest to algorytm pseudolosowy oparty o rozkład Poissona. Żadne piętro nie jest faworyzowane w tym algorytmie
-	\item Mordor Rano -- największa liczba ludzi pojawia się na piętrze 0, a sporadyczne jednostki na innych piętrach
-	\item Mordor Wieczorem -- najmniej ludzi pojawia się na piętrze 0. Pomiędzy pozostałymi piętrami rozkład ludzi jest podobny
-\end{itemize}
 \subsection{Moduł kontroli windy}
-\subsection{Moduł algorytmów sterowania windą}
-Pozwala na wybór algorytmu służącego do dawania rozkazów do modułu kontroli windą. Zaimplementowane algorytmy to:
+Zajmuje się przechowywaniem oraz modyfikacją aktualnego stanu windy za pomocą maszyny stanów. Przechowuje on także informacje o ludziach znajdujących się na poszczególnych piętrach oraz w windzie.  Generuje zdarzenia, które dopisywane są do kolejki zdarzeń w module zegara.
+\subsection{Moduł zegara}
+Zarządza zdarzeniami z poszczególnych modułów, które dzięki działaniu zegara, odbywają się w predefiniowanych chwilach czasowych. Każde zdarzenie w systemie zajmuje określoną liczbę tyknięć zegara, co symuluje upływ czasu.
+\subsection{Moduł generacji ludzi}
+Pozwala na generowanie ludzi chcących skorzystać z windy na różne sposoby. Każdy z algorytmów bazuje na rozkładzie Poissona, którego parametr lambda można modyfikować przy użyciu interfejsu graficznego (poprzez zmianę intensywności generatora). Zaimplementowane metody generowania ludzi to:
 \begin{itemize}
-	\item FCFS(First Come First Serve) -- Algorytm ten stara się jechać do pierwszego zgłoszenia, realizując po drodze śmieci
-	\item FCFS Momentum -- A to dodaje jeszcze momentum jebentum
+	\item Random -- algorytm losowy, żadne piętro nie jest faworyzowane w tym algorytmie, ludzie pojawiają się na wszystkich piętrach z takim samym prawdopodobieństwem i chcą jechać na losowe, inne piętra
+	\item Office Morning -- symuluje napływ ludzi do biurowca w godzinach porannych. Najwięcej ludzi pojawia się na parterze, natomiast na innych piętrach ludzie pojawiają się sporadycznie
+	\item Office Evening -- symuluje wychodzenie ludzi z biurowca w godzinach popołudniowo-wieczornych. Ludzie na parterze pojawiają się sporadycznie, natomiast na pozostałych piętrach ludzie pojawiają się z takim samym prawdopodobieństwem i wszyscy chcą jechać na parter
+\end{itemize}
+\subsection{Moduł algorytmów sterowania windą}
+Pozwala na wybór algorytmu służącego do podejmowania decyzji przez moduł kontroli windą. Zaimplementowane algorytmy to:
+\begin{itemize}
+	\item First Call First Serve -- obsługuje pierwsze zgłoszone żądanie, z wyjątkiem sytuacji, gdy po drodze jest w stanie obsłużyć jakieś inne żądanie
+	\item Momentum -- realizuje strategię kontroli kolektywnej
+	\item Morning -- stara się zoptymalizować czas oczekiwania w biurowcu w godzinach porannych, poprzez zjeżdżanie na parter w przypadku bezczynności windy
+\end{itemize}
+\subsection{Moduł statystyk}
+Zajmuje się wyliczaniem statystyk widocznych w obszarze statystyk. Są to (każda statystyka określająca czas jest wyrażona w tyknięciach zegara):
+\begin{itemize}
+	\item Elapsed time -- czas, który upłynął od rozpoczęcia symulacji
+	\item People arrived -- liczba ludzi, która pojawiła się w sumie na wszystkich piętrach od rozpoczęcia symulacji
+	\item People served -- liczba ludzi, która została obsłużona od rozpoczęcia symulacji
+	\item Average load -- średnie obciążenie windy wyrażone jako procent jej pojemości od rozpoczęcia symulacji
+	\item Average wait time -- średni czas oczekiwania ludzi zanim mogli wsiąść do windy
+	\item Max wait time -- najdłuższy czas oczekiwania osoby zanim mogła wsiąść do windy
+	\item Average serve time -- średni czas obsłużenia ludzi (od pojawienia się na piętrze początkowym, do dotarcia na piętro docelowe)
+	\item Max serve time -- najdłuższy czas obsłużenia osoby
+	\item Average extra floors -- średnia liczba pięter przejechanych ponad najmniejszą możliwą liczbę pięter dla każdego pasażera
 \end{itemize}
 
 \section{Bibliografia}
 [1] https://www.diva-portal.org/smash/get/diva2:668654/FULLTEXT01.pdf
-[2] http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group3Johan/report/alexandra.nordin.frederick.ceder.report.pdf
+[2] http://www.csc.kth.se/utbildning/kth/kurser/DD143X/dkand13/Group3Johan/report/\\
+\indent alexandra.nordin.frederick.ceder.report.pdf
 
 \end{document}
