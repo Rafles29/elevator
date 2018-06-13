@@ -133,7 +133,70 @@ Zaczęliśmy od przetestowania algorytmów w wersji statycznej, to znaczy ludzie
 \item 2 osoby na pierwszym piętrze, z których jedna chce jechać na trzecie piętro, a druga na parter
 \item 6 osób na trzecim pięrze, z których jedna chce jechać na pierwsze piętro, a pozostałe na piąte piętro
 \end{itemize}
+\noindent
+Testy polegały na uruchomieniu każdego algorytmu w statycznym trybie symulatora i zatrzymaniu symulacji gdy ostatnia osoba wysiadła z windy i spisaniu statystyk. Wyniki testów widać na poniższych wykresach.
 
+\begin{figure}[H]
+    \centering
+    \caption{Czas, który upłynął od rozpoczęcia symulacji}
+    \includegraphics[width=\textwidth]{s_elapsed.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Średnie obciążenie windy}
+    \includegraphics[width=\textwidth]{s_load.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Średni czas czekania oraz obsłużenia}
+    \includegraphics[width=\textwidth]{s_time.png}
+\end{figure}
+\noindent
+Jak widać w przypadku statycznym każdy algorytm osiągnął te same wyniki.
+
+\section{Testowanie dynamiczne}
+Następnie testowaliśmy algorytmy z różnymi generatorami w dynamicznym trybie symulatora. W chwili startu na piętrach nie czekali żadni ludzie, byli oni generowani losowo w oparciu o wybrany generator. Ponieważ generator nie przestaje działać sam z siebie, w celu porównania algorytmów zatrzymywaliśmy symulację po stałym czasie (wynoszącym 1000 tyknięć zegara) i spisywaliśmy statystyki. Wyniki testów widać na poniższych wykresach.
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator losowy - średnie obciążenie windy}
+    \includegraphics[width=\textwidth]{r_load.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator losowy - średni czas czekania oraz obsłużenia}
+    \includegraphics[width=\textwidth]{r_time.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator poranny - średnie obciążenie windy}
+    \includegraphics[width=\textwidth]{om_load.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator poranny - średni czas czekania oraz obsłużenia}
+    \includegraphics[width=\textwidth]{om_time.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator wieczorny - średnie obciążenie windy}
+    \includegraphics[width=\textwidth]{oe_load.png}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \caption{Generator wieczorny - średni czas czekania oraz obsłużenia}
+    \includegraphics[width=\textwidth]{oe_time.png}
+\end{figure}
+
+\noindent
+Widać tu nieco zaskakujące wyniki, ponieważ w przypadku generatora porannego algorytm poranny nie osiąga najlepszych wyników (poza średnim obciążeniem), ale może być to spowodowane przypadkową generacją ludzi faworyzującą inne algorymy.
 
 \section{Bibliografia}
 [1] https://www.diva-portal.org/smash/get/diva2:668654/FULLTEXT01.pdf
